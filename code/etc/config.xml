@@ -30,6 +30,13 @@
 			<postcode>
 				<class>Meanbee_Postcode_Block</class>
 			</postcode>
+
+            <checkout>
+                <rewrite>
+                    <onepage_shipping>Meanbee_Postcode_Block_Checkout_Onepage_Shipping</onepage_shipping>
+                    <onepage_billing>Meanbee_Postcode_Block_Checkout_Onepage_Billing</onepage_billing>
+                </rewrite>
+            </checkout>
 		</blocks>
 		
 		<helpers>
