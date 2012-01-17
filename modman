@@ -1,5 +1,6 @@
 ## Code
-code                            app/code/community/Meanbee/Finder
+code                            app/code/community/Meanbee/Postcode
+js                              js/meanbee/postcode
 
 ## Misc
 Module.xml                      app/etc/modules/Meanbee_Postcode.xml
