@@ -14,9 +14,11 @@
     $('shipping:country_id').value = 'GB';
     shippingRegionUpdater.update();
     
+    /* Initialise the postcode object */
+    var meanbee_postcode = new Postcode();
     /* Activate the listeners */
-    postcode_observe('billing', 'frontend');
-    postcode_observe('shipping', 'frontend');
+    meanbee_postcode.observe('billing', 'frontend');
+    meanbee_postcode.observe('shipping', 'frontend');
 
 //]]>
 </script>
