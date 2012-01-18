@@ -2,7 +2,7 @@
 <layout version="0.1.0">
 	<checkout_onepage_index>
 		<reference name="head">
-			<action method="addJs"><script>meanbee/postcode.js</script></action>
+            <action method="addJs"><script>meanbee/postcode/postcode.js</script></action>
 		</reference>
         <reference name="content">
             <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepage_postcode_updates.phtml"/>
