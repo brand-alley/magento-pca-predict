@@ -1,7 +1,9 @@
 ## Code
 code                            app/code/community/Meanbee/Postcode
-design/layout                   app/design/frontend/base/default/layout/meanbee/postcode
-design/template                 app/design/frontend/base/default/template/meanbee/postcode
+design/frontend/layout          app/design/frontend/base/default/layout/meanbee/postcode
+design/frontend/template        app/design/frontend/base/default/template/meanbee/postcode
+design/adminhtml/layout         app/design/adminhtml/default/default/layout/meanbee/postcode
+design/adminhtml/template       app/design/adminhtml/default/default/template/meanbee/postcode
 js                              js/meanbee/postcode
 
 ## Misc

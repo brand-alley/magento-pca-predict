@@ -1,0 +1,38 @@
+<?php echo $this->getChildHtml('magento_form_account') ?>
+<div class="meanbee_address_finder entry-edit">
+    <div class="entry-edit-head">
+        <h4>Meanbee Address Finder</h4>
+    </div>
+    <fieldset class="np">
+        <table class="form-list" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td class="label">
+                        <label for="billing:postcode"><?php echo $this->__('Enter Postcode:') ?></label>
+                    </td>
+                    <td class="value">
+                        <input class="input-text" type="text" title="<?php echo $this->__('Post Code') ?>" id="billing:postcode">
+                        <button id="meanbee:billing_address_find" type="button">Find Address</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li id="meanbee:billing_address_selector">&nbsp;</li>
+        </ul>
+    </fieldset>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+    var BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
+
+    if(window.location.href.match('https://') && !BASE_URL.match('https://')){
+       BASE_URL = BASE_URL.replace('http://', 'https://')
+    }
+
+    /* Activate the listeners */
+    postcode_observe('billing', 'backend');
+
+//]]>
+</script>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <adminhtml_sales_order_create_load_block_data>
+        <reference name="data">
+            <reference name="form_account">
+                <action method="setTemplate">
+                    <template>meanbee/address.phtml</template>
+                </action>
+                <block type="adminhtml/sales_order_create_form_account" template="sales/order/create/form/account.phtml" name="magento_form_account" />
+            </reference>
+        </reference>
+    </adminhtml_sales_order_create_load_block_data>
+
+    <adminhtml_sales_order_create_index>
+        <reference name="head">
+            <action method="addJs"><script>meanbee/postcode.js</script></action>
+            <action method="addCss"><stylesheet>css/meanbee/postcode.css</stylesheet></action>
+        </reference>
+        <reference name="data">
+            <reference name="form_account">
+                <action method="setTemplate">
+                    <template>meanbee/address.phtml</template>
+                </action>
+                <block type="adminhtml/sales_order_create_form_account" template="sales/order/create/form/account.phtml" name="magento_form_account" />
+            </reference>
+        </reference>
+    </adminhtml_sales_order_create_index>
+
+</layout>
