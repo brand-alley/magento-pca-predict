@@ -17,6 +17,7 @@ function postcode_observe(a, page) {
         var postcode = $F(a + ':postcode');
         if (postcode != '') {
             $('meanbee:' + a + '_address_selector').innerHTML = "<p>Loading...</p>";
+            $('meanbee:' + a + '_address_selector').removeClassName('invisible');
             postcode_fetchOptions(postcode, a, page);
         }
     });
@@ -38,7 +39,7 @@ function postcode_fetchOptions(p, a, page) {
                 if (page == "backend") {
                     $('meanbee:' + a + '_address_selector').innerHTML = c + ' <p><button onclick="postcode_fillBackendFields($F(\'meanbee:billing_address_selector_select\'), \'billing\')" type="button">Select as Billing Address</button> <button onclick="postcode_fillBackendFields($F(\'meanbee:billing_address_selector_select\'), \'shipping\')" type="button">Select as Shipping Address</button></p>';
                 } else {
-                    $('meanbee:' + a + '_address_selector').innerHTML = c + ' <button onclick="postcode_fillFields($F(\'meanbee:' + a + '_address_selector_select\'), \'' + a + '\')" type="button">Select Address</button>';
+                    $('meanbee:' + a + '_address_selector').innerHTML = c + ' <button onclick="postcode_fillFields($F(\'meanbee:' + a + '_address_selector_select\'), \'' + a + '\')" type="button" class="button"><span><span>Select Address</span></span></button>';
                 } 
                 //$('meanbee:' + a + '_address_selector').innerHTML += '<br /><small><b>Note:</b> Please select your address from the above drop down menu before pressing "Select Address".</small>';
             } else {
