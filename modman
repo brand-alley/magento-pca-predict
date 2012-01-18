@@ -4,6 +4,7 @@ design/frontend/layout          app/design/frontend/base/default/layout/meanbee/
 design/frontend/template        app/design/frontend/base/default/template/meanbee/postcode
 design/adminhtml/layout         app/design/adminhtml/default/default/layout/meanbee/postcode
 design/adminhtml/template       app/design/adminhtml/default/default/template/meanbee/postcode
+assets/frontend                 skin/frontend/base/default/meanbee/postcode
 js                              js/meanbee/postcode
 
 ## Misc

@@ -3,6 +3,7 @@
 	<checkout_onepage_index>
 		<reference name="head">
             <action method="addJs"><script>meanbee/postcode/postcode.js</script></action>
+            <action method="addCss"><stylesheet>meanbee/postcode/css/postcode.css</stylesheet></action> 
 		</reference>
         <reference name="content">
             <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepage_postcode_updates.phtml"/>
