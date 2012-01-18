@@ -28,6 +28,20 @@ var Postcode = Class.create({
             $$('.meanbee-postcode-element').each(function(el) {
                 el.addClassName('invisible');
             });
+            $('meanbee:' + a + '_show_another').removeClassName('invisible');
+            e.preventDefault();
+        });
+
+        $('meanbee:' + a + '_show_another_link').observe('click', function(e) {
+            $$('.address-detail').each(function(el) {
+                el.addClassName('invisible')
+            });
+            $$('.meanbee-postcode-element').each(function(el) {
+                el.removeClassName('invisible');
+            });
+            $('meanbee:' + a + '_show_another').addClassName('invisible');
+            $('meanbee:' + a + '_address_selector').addClassName('invisible');
+            meanbee_postcode.clearFields(a);
             e.preventDefault();
         });
     },
@@ -106,7 +120,16 @@ var Postcode = Class.create({
                     
                     $(a + ':postcode').value = j.content.postcode;
 
-                    $('meanbee:' + a + '_address_selector').innerHTML = '&nbsp;';
+                    //$('meanbee:' + a + '_address_selector').innerHTML = '&nbsp;';
+
+                    $$('.address-detail').each(function(el) {
+                        el.removeClassName('invisible')
+                    });
+                    $$('.meanbee-postcode-element').each(function(el) {
+                        el.addClassName('invisible')
+                    });
+                    $('meanbee:' + a + '_show_another').removeClassName('invisible');
+                    $('meanbee:' + a + '_address_selector').addClassName('invisible');
                 } else {
                     meanbee_postcode.error(j.content, a);
                 }
@@ -171,6 +194,27 @@ var Postcode = Class.create({
         });
     },
 
+    clearFields: function(a) {                
+        var formElements = new Array(
+            $(a + ':company'),
+            $(a + ':postcode'),
+            $(a + ':street1'),
+            $(a + ':street2'),
+            $(a + ':street3'),
+            $(a + ':city'),
+            $(a + ':region'),
+            $(a + ':region_id')
+        );
+
+        formElements.each(function(el) {
+            if (el != null) {
+                el.value = '';
+            }
+        });
+
+
+
+    },
 
 
     error: function(m, a) {
