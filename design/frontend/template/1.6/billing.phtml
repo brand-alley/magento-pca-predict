@@ -57,7 +57,7 @@
                     </div>
         <?php endif ?>
                 </li>
-                <li class="fields">
+                <li class="fields postcode">
                     <div class="field">
                         <label for="billing:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
                         <div class="input-box">
@@ -69,6 +69,11 @@
                         <div class="input-box">
                             <button id="meanbee:billing_address_find" type="button" title="<?php echo $this->__('Find Address') ?>" class="button" ><span><span><?php echo $this->__('Find Address') ?></span></span></button>
                         </div>
+                    </div>
+                </li>
+                <li class="wide">
+                    <div class="input-box">
+                        <a href="#" id="meanbee:billing_input_address_manually"><?php echo $this->__('Input address manually') ?></a>
                     </div>
                 </li>
                 <li id="meanbee:billing_address_selector" class="invisible">&nbsp;</li>
