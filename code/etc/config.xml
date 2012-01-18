@@ -22,14 +22,14 @@
 	
 	<global>
 		<models>
-			<meanbee_postcode>
+			<postcode>
 				<class>Meanbee_Postcode_Model</class>
-			</meanbee_postcode>
+			</postcode>
 		</models>
 		<blocks>
-			<meanbee_postcode>
+			<postcode>
 				<class>Meanbee_Postcode_Block</class>
-			</meanbee_postcode>
+			</postcode>
 
             <checkout>
                 <rewrite>
@@ -40,49 +40,49 @@
 		</blocks>
 		
 		<helpers>
-			<meanbee_postcode>
+			<postcode>
 				<class>Meanbee_Postcode_Helper</class>
-			</meanbee_postcode>
+			</postcode>
 		</helpers>
 	</global>
 	
 	<frontend>
 		<routers>
-			<meanbee_postcode>
+			<postcode>
 				<use>standard</use>
 				<args>
                     <module>Meanbee_Postcode</module>
                     <frontName>postcode</frontName>
 				</args>
-			</meanbee_postcode>
+			</postcode>
 		</routers>
 		<layout>
 			<updates>
-				<meanbee_postcode>
-                    <file>postcode.xml</file>
-				</meanbee_postcode>
+				<postcode>
+                    <file>meanbee/postcode/postcode.xml</file>
+				</postcode>
 			</updates>
 		</layout>
 	</frontend>
     
     <admin>    
         <routers>
-            <meanbee_postcode>
+            <postcode>
                 <use>admin</use>
                 <args>
                     <module>Meanbee_Postcode</module>
                     <frontName>postcode</frontName>
                 </args>
-            </meanbee_postcode>
+            </postcode>
         </routers>
     </admin>	
 	
     <adminhtml>
         <layout>
             <updates>
-                <meanbee_postcode>
-                    <file>postcode.xml</file>
-                </meanbee_postcode>
+                <postcode>
+                    <file>meanbee/postcode/postcode.xml</file>
+                </postcode>
             </updates>
         </layout>
 

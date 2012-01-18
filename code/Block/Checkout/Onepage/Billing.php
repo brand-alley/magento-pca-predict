@@ -5,7 +5,7 @@ class Meanbee_Postcode_Block_Checkout_Onepage_Billing extends Mage_Checkout_Bloc
      */
     public function getTemplate() {
         if (/*TODO add enabled switch Mage::helper('worldaddresses/config')->isEnabled()*/ true) {
-            $version = Mage::helper('meanbee_postcode')->getVersion();
+            $version = Mage::helper('postcode')->getVersion();
             if ($version != false) {
                 return 'meanbee/postcode/' . $version . '/billing.phtml';
             }

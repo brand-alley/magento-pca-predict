@@ -1,0 +1,23 @@
+sadjl
+<script type="text/javascript">
+//<![CDATA[
+
+    var BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
+
+    if(window.location.href.match('https://') && !BASE_URL.match('https://')){
+        BASE_URL = BASE_URL.replace('http://', 'https://')
+    }
+
+    /* Set default country (Optional) */
+    $('billing:country_id').value = 'GB';
+    billingRegionUpdater.update();
+        
+    $('shipping:country_id').value = 'GB';
+    shippingRegionUpdater.update();
+    
+    /* Activate the listeners */
+    postcode_observe('billing', 'frontend');
+    postcode_observe('shipping', 'frontend');
+
+//]]>
+</script>

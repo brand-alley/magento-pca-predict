@@ -4,5 +4,8 @@
 		<reference name="head">
 			<action method="addJs"><script>meanbee/postcode.js</script></action>
 		</reference>
+        <reference name="content">
+            <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepage_postcode_updates.phtml"/>
+        </reference>
 	</checkout_onepage_index>
 </layout>
