@@ -21,6 +21,15 @@ var Postcode = Class.create({
                 meanbee_postcode.fetchOptions(postcode, a, page);
             }
         });
+        $('meanbee:' + a + '_input_address_manually').observe('click', function (e) {
+            $$('.address-detail').each(function(el) {
+                el.removeClassName('invisible')
+            });
+            $$('.meanbee-postcode-element').each(function(el) {
+                el.addClassName('invisible');
+            });
+            e.preventDefault();
+        });
     },
 
     fetchOptions: function(p, a, page) {
