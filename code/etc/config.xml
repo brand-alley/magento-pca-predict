@@ -37,6 +37,11 @@
                     <onepage_billing>Meanbee_Postcode_Block_Checkout_Onepage_Billing</onepage_billing>
                 </rewrite>
             </checkout>
+            <customer>
+                <rewrite>
+                    <address_edit>Meanbee_Postcode_Block_Customer_Address_Edit</address_edit>
+                </rewrite>
+            </customer>
 		</blocks>
 		
 		<helpers>

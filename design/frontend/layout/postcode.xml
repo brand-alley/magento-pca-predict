@@ -1,12 +1,21 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-	<checkout_onepage_index>
+    <default>
 		<reference name="head">
             <action method="addJs"><script>meanbee/postcode/postcode.js</script></action>
             <action method="addCss"><stylesheet>meanbee/postcode/css/postcode.css</stylesheet></action> 
 		</reference>
+    </default>
+
+	<checkout_onepage_index>
         <reference name="content">
             <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepage_postcode_updates.phtml"/>
         </reference>
 	</checkout_onepage_index>
+
+    <customer_address_form>
+        <reference name="content">
+            <block type="core/template" name="meanbee.account.postcode.updates" template="meanbee/postcode/account_postcode_updates.phtml"/>
+        </reference>
+    </customer_address_form>
 </layout>

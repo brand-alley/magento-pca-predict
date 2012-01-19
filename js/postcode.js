@@ -46,6 +46,40 @@ var Postcode = Class.create({
         });
     },
 
+    accountObserve: function(a) {
+        $('meanbee:' + a + '_address_find').observe('click', function (e) {
+            var postcode = $F('zip');
+            if (postcode != '') {
+                $('meanbee:' + a + '_address_selector').innerHTML = "<p>Loading...</p>";
+                $('meanbee:' + a + '_address_selector').removeClassName('invisible');
+                meanbee_postcode.fetchAccountOptions(postcode);
+            }
+        });
+        $('meanbee:' + a + '_input_address_manually').observe('click', function (e) {
+            $$('.address-detail').each(function(el) {
+                el.removeClassName('invisible')
+            });
+            $$('.meanbee-postcode-element').each(function(el) {
+                el.addClassName('invisible');
+            });
+            $('meanbee:' + a + '_show_another').removeClassName('invisible');
+            e.preventDefault();
+        });
+
+        $('meanbee:' + a + '_show_another_link').observe('click', function(e) {
+            $$('.address-detail').each(function(el) {
+                el.addClassName('invisible')
+            });
+            $$('.meanbee-postcode-element').each(function(el) {
+                el.removeClassName('invisible');
+            });
+            $('meanbee:' + a + '_show_another').addClassName('invisible');
+            $('meanbee:' + a + '_address_selector').addClassName('invisible');
+            meanbee_postcode.clearAccountFields();
+            e.preventDefault();
+        });
+    },
+
     fetchOptions: function(p, a, page) {
         new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
             method: 'get',
@@ -70,6 +104,29 @@ var Postcode = Class.create({
                 }
             }
         });
+    },
+
+    fetchAccountOptions: function(p) {
+        new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
+            method: 'get',
+            parameters: 'postcode=' + p,
+            onSuccess: function(t) {
+                var j = t.responseJSON;
+
+                if (!j.error) {
+                    var c = '<select id="meanbee:account_address_selector_select">';
+                    for(var i = 0; i < j.content.length; i++) {
+                        c += '<option value="' + j.content[i].id + '">' + j.content[i].description + '</option>'
+                    }
+                    c+= '</select>';
+                    $('meanbee:account_address_selector').innerHTML = '<div class="field">' + c + '</div>' + ' <div class="field"><button onclick="meanbee_postcode.fillAccountFields($F(\'meanbee:account_address_selector_select\'))" type="button" class="button"><span><span>Select Address</span></span></button></div>';
+                    //$('meanbee:' + a + '_address_selector').innerHTML += '<br /><small><b>Note:</b> Please select your address from the above drop down menu before pressing "Select Address".</small>';
+                } else {
+                    meanbee_postcode.error(j.content, 'account');
+                }
+            }
+        });
+                                 
     },
     
     fillFields: function(id, a) {                
@@ -136,6 +193,93 @@ var Postcode = Class.create({
             }
         });
     },
+
+
+
+
+
+
+    fillAccountFields: function(id) {                
+        new Ajax.Request(BASE_URL + 'postcode/finder/single/', {
+            method: 'get',
+            parameters: 'id=' + id,
+            onSuccess: function(t) {
+                var j = t.responseJSON;
+
+                if (!j.error) {
+                    var lines = new Array(j.content.line1, j.content.line2, j.content.line3, j.content.line4);
+                    var concat_line = null;
+
+                    $('country').value = 'GB';
+                    eval('accountRegionUpdater.update();');
+                    
+                    for (var i =0; i < 4; i++) {
+                        if (typeof(lines[i]) != "undefined" &&  $('street_' + (i+1)) != null) {
+                            $('street_' + (i+1)).value = lines[i];
+                        } else if ($('street' + (i+1)) != null) {
+                            $('street_' + (i+1)).value = '';
+                        } else if (typeof(lines[i]) != "undefined") {
+                            if (concat_line == null) {
+                                concat_line = i - 1;
+                            }
+
+                            $('street_' + (concat_line+1)).value += ', ' + lines[i];
+                        }
+                    }
+
+                    //if (typeof(j.content.organisation_name) != "undefined") {
+                    //    $('company').value = j.content.organisation_name;
+                    //} else {
+                    //    $('company').value = '';
+                    //}
+                    
+                    if (typeof(j.content.post_town) != "undefined") {
+                        $('city').value = j.content.post_town;
+                    } else {
+                        $('city').value = '';
+                    }
+                    
+                    if (typeof(j.content.county) != "undefined") {
+                        $('region').value = j.content.county;
+                    } else {
+                        $('region').value = '';
+                    }
+                    
+                    $('zip').value = j.content.postcode;
+
+                    //$('meanbee:' + '_address_selector').innerHTML = '&nbsp;';
+
+                    $$('.address-detail').each(function(el) {
+                        el.removeClassName('invisible')
+                    });
+                    $$('.meanbee-postcode-element').each(function(el) {
+                        el.addClassName('invisible')
+                    });
+                    $('meanbee:account_show_another').removeClassName('invisible');
+                    $('meanbee:account_address_selector').addClassName('invisible');
+                } else {
+                    meanbee_postcode.error(j.content, a);
+                }
+            }
+        });
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     fillBackendFields: function(id, a) {                
         new Ajax.Request(BASE_URL + 'postcode/finder/single/', {
@@ -211,9 +355,25 @@ var Postcode = Class.create({
                 el.value = '';
             }
         });
+    },
 
+    clearAccountFields: function() {                
+        var formElements = new Array(
+            $('company'),
+            $('zip'),
+            $('street_1'),
+            $('street_2'),
+            $('street_3'),
+            $('city'),
+            $('region'),
+            $('region_id')
+        );
 
-
+        formElements.each(function(el) {
+            if (el != null) {
+                el.value = '';
+            }
+        });
     },
 
 

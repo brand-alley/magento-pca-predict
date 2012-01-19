@@ -1,0 +1,21 @@
+
+<script type="text/javascript">
+//<![CDATA[
+
+    var BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
+
+    if(window.location.href.match('https://') && !BASE_URL.match('https://')){
+        BASE_URL = BASE_URL.replace('http://', 'https://')
+    }
+
+    /* Set default country (Optional) */
+    $('country').value = 'GB';
+    accountRegionUpdater.update();
+    
+    /* Initialise the postcode object */
+    var meanbee_postcode = new Postcode();
+    /* Activate the listeners */
+    meanbee_postcode.accountObserve('account');
+
+//]]>
+</script>
