@@ -8,17 +8,17 @@
             <tbody>
                 <tr>
                     <td class="label">
-                        <label for="billing:postcode"><?php echo $this->__('Enter Postcode:') ?></label>
+                        <label for="backend:postcode"><?php echo $this->__('Enter Postcode:') ?></label>
                     </td>
                     <td class="value">
-                        <input class="input-text" type="text" title="<?php echo $this->__('Post Code') ?>" id="billing:postcode">
-                        <button id="meanbee:billing_address_find" type="button">Find Address</button>
+                        <input class="input-text" type="text" title="<?php echo $this->__('Post Code') ?>" id="backend:postcode">
+                        <button id="meanbee:backend_address_find" type="button">Find Address</button>
                     </td>
                 </tr>
             </tbody>
         </table>
         <ul>
-            <li id="meanbee:billing_address_selector">&nbsp;</li>
+            <li id="meanbee:backend_address_selector">&nbsp;</li>
         </ul>
     </fieldset>
 </div>
@@ -31,8 +31,10 @@
        BASE_URL = BASE_URL.replace('http://', 'https://')
     }
 
+    var meanbee_postcode = new Postcode();
+
     /* Activate the listeners */
-    postcode_observe('billing', 'backend');
+    meanbee_postcode.backendObserve('billing', 'backend');
 
 //]]>
 </script>

@@ -46,6 +46,18 @@ var Postcode = Class.create({
         });
     },
 
+    backendObserve: function() {
+        $('meanbee:backend_address_find').observe('click', function (e) {
+            var postcode = $F('backend:postcode');
+            if (postcode != '') {
+                $('meanbee:backend_address_selector').innerHTML = "<p>Loading...</p>";
+                $('meanbee:backend_address_selector').removeClassName('invisible');
+                meanbee_postcode.fetchOptions(postcode, 'backend', 'backend');
+            }
+        });
+    },
+    
+
     accountObserve: function(a) {
         $('meanbee:' + a + '_address_find').observe('click', function (e) {
             var postcode = $F('zip');
@@ -94,7 +106,7 @@ var Postcode = Class.create({
                     }
                     c+= '</select>';
                     if (page == "backend") {
-                        $('meanbee:' + a + '_address_selector').innerHTML = c + ' <p><button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:billing_address_selector_select\'), \'billing\')" type="button">Select as Billing Address</button> <button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:billing_address_selector_select\'), \'shipping\')" type="button">Select as Shipping Address</button></p>';
+                        $('meanbee:' + a + '_address_selector').innerHTML = c + ' <p><button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:backend_address_selector_select\'), \'billing\')" type="button">Select as Billing Address</button> <button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:backend_address_selector_select\'), \'shipping\')" type="button">Select as Shipping Address</button></p>';
                     } else {
                         $('meanbee:' + a + '_address_selector').innerHTML = '<div class="field">' + c + '</div>' + ' <div class="field"><button onclick="meanbee_postcode.fillFields($F(\'meanbee:' + a + '_address_selector_select\'), \'' + a + '\')" type="button" class="button"><span><span>Select Address</span></span></button></div>';
                     } 
@@ -264,23 +276,6 @@ var Postcode = Class.create({
         });
     },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     fillBackendFields: function(id, a) {                
         new Ajax.Request(BASE_URL + 'postcode/finder/single/', {
             method: 'get',
@@ -330,7 +325,6 @@ var Postcode = Class.create({
                     
                     $(field_prefix + 'postcode').value = j.content.postcode;
 
-                    $('meanbee:billing_address_selector').innerHTML = '&nbsp;';
                 } else {
                     meanbee_postcode.error(j.content, a);
                 }
