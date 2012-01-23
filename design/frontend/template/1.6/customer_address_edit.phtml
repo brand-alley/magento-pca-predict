@@ -174,3 +174,13 @@
     var accountRegionUpdater = new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
 </script>
+
+<?php var_dump($this->hasAddress()) ?>
+<?php if($this->hasAddress()): ?>
+<script type="text/javascript">
+// A little bit of javascript which will show the whole address if one exists.
+document.observe('dom:loaded', function() {
+    document.getElementById('meanbee:account_input_address_manually').simulate('click');
+});
+</script>
+<?php endif ?>

@@ -2,6 +2,7 @@
 <layout version="0.1.0">
     <default>
 		<reference name="head">
+            <action method="addJs"><script>meanbee/postcode/simulate.js</script></action>
             <action method="addJs"><script>meanbee/postcode/postcode.js</script></action>
             <action method="addCss"><stylesheet>meanbee/postcode/css/postcode.css</stylesheet></action> 
 		</reference>
