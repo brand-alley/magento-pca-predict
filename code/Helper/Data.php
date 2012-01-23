@@ -45,6 +45,9 @@ class Meanbee_Postcode_Helper_Data extends Mage_Core_Helper_Abstract {
     public function log($message, $severity = Zend_Log::DEBUG, $force = false) {
         Mage::log($message, $severity, 'meanbee_postcode.log', $force);
     }
-    
+
+    public function isEnabled() {
+        return Mage::getStoreConfigFlag('postcode/general/enabled');
+    }
 
 }

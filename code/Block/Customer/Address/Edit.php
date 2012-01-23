@@ -4,7 +4,7 @@ class Meanbee_Postcode_Block_Customer_Address_Edit extends Mage_Customer_Block_A
      * Override of the getTemplate method to change it to one based on our magento version
      */
     public function getTemplate() {
-        if (/*TODO add enabled switch Mage::helper('worldaddresses/config')->isEnabled()*/ true) {
+        if (Mage::help('postcode')->isEnabled()) {
             $version = Mage::helper('postcode')->getVersion();
             if ($version != false) {
                 return 'meanbee/postcode/' . $version . '/customer_address_edit.phtml';

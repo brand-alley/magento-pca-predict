@@ -1,4 +1,5 @@
 <?php echo $this->getChildHtml('magento_form_account') ?>
+<?php if (Mage::helper('postcode')->isEnabled()): ?>
 <div class="meanbee_address_finder entry-edit">
     <div class="entry-edit-head">
         <h4>Meanbee Address Finder</h4>
@@ -38,3 +39,4 @@
 
 //]]>
 </script>
+<?php endif; ?>
