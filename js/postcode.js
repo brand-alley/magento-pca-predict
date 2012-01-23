@@ -22,10 +22,10 @@ var Postcode = Class.create({
             }
         });
         $('meanbee:' + a + '_input_address_manually').observe('click', function (e) {
-            $$('.address-detail').each(function(el) {
+            $$('#opc-' + a + ' .address-detail').each(function(el) {
                 el.removeClassName('invisible')
             });
-            $$('.meanbee-postcode-element').each(function(el) {
+            $$('#opc-' + a + ' .meanbee-postcode-element').each(function(el) {
                 el.addClassName('invisible');
             });
             $('meanbee:' + a + '_show_another').removeClassName('invisible');
@@ -33,10 +33,10 @@ var Postcode = Class.create({
         });
 
         $('meanbee:' + a + '_show_another_link').observe('click', function(e) {
-            $$('.address-detail').each(function(el) {
+            $$('#opc-' + a + ' .address-detail').each(function(el) {
                 el.addClassName('invisible')
             });
-            $$('.meanbee-postcode-element').each(function(el) {
+            $$('#opc-' + a + ' .meanbee-postcode-element').each(function(el) {
                 el.removeClassName('invisible');
             });
             $('meanbee:' + a + '_show_another').addClassName('invisible');
