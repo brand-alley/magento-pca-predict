@@ -12,13 +12,13 @@
  */
 
 var Postcode = Class.create({
-    observe: function(a, page) {
+    observe: function(a) {
         $('meanbee:' + a + '_address_find').observe('click', function (e) {
             var postcode = $F(a + ':postcode');
             if (postcode != '') {
                 $('meanbee:' + a + '_address_selector').innerHTML = "<p>Loading...</p>";
                 $('meanbee:' + a + '_address_selector').removeClassName('invisible');
-                meanbee_postcode.fetchOptions(postcode, a, page);
+                meanbee_postcode.fetchOptions(postcode, a);
             }
         });
         $('meanbee:' + a + '_input_address_manually').observe('click', function (e) {
@@ -52,7 +52,7 @@ var Postcode = Class.create({
             if (postcode != '') {
                 $('meanbee:backend_address_selector').innerHTML = "<p>Loading...</p>";
                 $('meanbee:backend_address_selector').removeClassName('invisible');
-                meanbee_postcode.fetchOptions(postcode, 'backend', 'backend');
+                meanbee_postcode.fetchBackendOptions(postcode);
             }
         });
     },
@@ -92,7 +92,7 @@ var Postcode = Class.create({
         });
     },
 
-    fetchOptions: function(p, a, page) {
+    fetchOptions: function(p, a) {
         new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
             method: 'get',
             parameters: 'postcode=' + p,
@@ -105,14 +105,32 @@ var Postcode = Class.create({
                         c += '<option value="' + j.content[i].id + '">' + j.content[i].description + '</option>'
                     }
                     c+= '</select>';
-                    if (page == "backend") {
-                        $('meanbee:' + a + '_address_selector').innerHTML = c + ' <p><button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:backend_address_selector_select\'), \'billing\')" type="button">Select as Billing Address</button> <button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:backend_address_selector_select\'), \'shipping\')" type="button">Select as Shipping Address</button></p>';
-                    } else {
-                        $('meanbee:' + a + '_address_selector').innerHTML = '<div class="field">' + c + '</div>' + ' <div class="field"><button onclick="meanbee_postcode.fillFields($F(\'meanbee:' + a + '_address_selector_select\'), \'' + a + '\')" type="button" class="button"><span><span>Select Address</span></span></button></div>';
-                    } 
+                    $('meanbee:' + a + '_address_selector').innerHTML = '<div class="field">' + c + '</div>' + ' <div class="field"><button onclick="meanbee_postcode.fillFields($F(\'meanbee:' + a + '_address_selector_select\'), \'' + a + '\')" type="button" class="button"><span><span>Select Address</span></span></button></div>';
                     //$('meanbee:' + a + '_address_selector').innerHTML += '<br /><small><b>Note:</b> Please select your address from the above drop down menu before pressing "Select Address".</small>';
                 } else {
                     meanbee_postcode.error(j.content, a);
+                }
+            }
+        });
+    },
+
+    fetchBackendOptions: function(p) {
+        new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
+            method: 'get',
+            parameters: 'postcode=' + p,
+            onSuccess: function(t) {
+                var j = t.responseJSON;
+
+                if (!j.error) {
+                    var c = '<select id="meanbee:backend_address_selector_select">';
+                    for(var i = 0; i < j.content.length; i++) {
+                        c += '<option value="' + j.content[i].id + '">' + j.content[i].description + '</option>'
+                    }
+                    c+= '</select>';
+                    $('meanbee:backend_address_selector').innerHTML = c + ' <p><button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:backend_address_selector_select\'), \'billing\')" type="button">Select as Billing Address</button> <button onclick="meanbee_postcode.fillBackendFields($F(\'meanbee:backend_address_selector_select\'), \'shipping\')" type="button">Select as Shipping Address</button></p>';
+                    //$('meanbee:backend_address_selector').innerHTML += '<br /><small><b>Note:</b> Please select your address from the above drop down menu before pressing "Select Address".</small>';
+                } else {
+                    meanbee_postcode.error(j.content, 'backend');
                 }
             }
         });
