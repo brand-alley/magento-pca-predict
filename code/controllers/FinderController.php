@@ -12,35 +12,6 @@
  * @license    Single Site License, requiring consent from Meanbee Internet Solutions
  */
 class Meanbee_Postcode_FinderController extends Mage_Core_Controller_Front_Action {
-    public function preDispatch() {
-        if (Mage::getStoreConfig('postcode/options/security') ) {
-            if (isset($_SERVER['HTTP_REFERER'])) {                
-                $us = Mage::getUrl();
-                $us = substr($us, strpos($us, ':') + 3);
-                
-                preg_match('/https?:\/\/([a-zA-Z0-9\.]+\/)/i', $_SERVER['HTTP_REFERER'], $matches);
-                if (count($matches) == 2) {
-                    $them = $matches[1]; 
-                }
-                
-                //echo $us . " - " . $them;
-                
-                if ($us != $them) {
-                    echo Zend_Json::encode(array(
-                        "error" => true,
-                        "content" => "Security check failed.  Request identified as originating from '$them' need '$us'"
-                    ));
-                    exit;
-                }
-            } else {
-                    echo Zend_Json::encode(array(
-                        "error" => true,
-                        "content" => "Security check failed.  Unable to identify referrer."
-                    ));
-                    exit;
-            }
-        }
-    }
     
     public function multipleAction() {
         header("Content-type: application/json");
