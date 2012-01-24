@@ -2,10 +2,10 @@
 <script type="text/javascript">
 //<![CDATA[
 
-    var BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
+    var MEANBEE_POSTCODE_BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
 
-    if(window.location.href.match('https://') && !BASE_URL.match('https://')){
-        BASE_URL = BASE_URL.replace('http://', 'https://')
+    if(window.location.href.match('https://') && !MEANBEE_POSTCODE_BASE_URL.match('https://')){
+        MEANBEE_POSTCODE_BASE_URL = MEANBEE_POSTCODE_BASE_URL.replace('http://', 'https://')
     }
 
     /* Set default country (Optional) */
