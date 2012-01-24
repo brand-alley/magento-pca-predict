@@ -93,7 +93,7 @@ var Postcode = Class.create({
     },
 
     fetchOptions: function(p, a) {
-        new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
+        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/multiple/', {
             method: 'get',
             parameters: 'postcode=' + p,
             onSuccess: function(t) {
@@ -115,7 +115,7 @@ var Postcode = Class.create({
     },
 
     fetchBackendOptions: function(p) {
-        new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
+        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/multiple/', {
             method: 'get',
             parameters: 'postcode=' + p,
             onSuccess: function(t) {
@@ -137,7 +137,7 @@ var Postcode = Class.create({
     },
 
     fetchAccountOptions: function(p) {
-        new Ajax.Request(BASE_URL + 'postcode/finder/multiple/', {
+        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/multiple/', {
             method: 'get',
             parameters: 'postcode=' + p,
             onSuccess: function(t) {
@@ -160,7 +160,7 @@ var Postcode = Class.create({
     },
     
     fillFields: function(id, a) {                
-        new Ajax.Request(BASE_URL + 'postcode/finder/single/', {
+        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/single/', {
             method: 'get',
             parameters: 'id=' + id,
             onSuccess: function(t) {
@@ -209,10 +209,10 @@ var Postcode = Class.create({
 
                     //$('meanbee:' + a + '_address_selector').innerHTML = '&nbsp;';
 
-                    $$('.address-detail').each(function(el) {
+                    $$('#opc-' + a + ' .address-detail').each(function(el) {
                         el.removeClassName('invisible')
                     });
-                    $$('.meanbee-postcode-element').each(function(el) {
+                    $$('#opc-' + a + ' .meanbee-postcode-element').each(function(el) {
                         el.addClassName('invisible')
                     });
                     $('meanbee:' + a + '_show_another').removeClassName('invisible');
@@ -230,7 +230,7 @@ var Postcode = Class.create({
 
 
     fillAccountFields: function(id) {                
-        new Ajax.Request(BASE_URL + 'postcode/finder/single/', {
+        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/single/', {
             method: 'get',
             parameters: 'id=' + id,
             onSuccess: function(t) {
@@ -295,7 +295,7 @@ var Postcode = Class.create({
     },
 
     fillBackendFields: function(id, a) {                
-        new Ajax.Request(BASE_URL + 'postcode/finder/single/', {
+        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/single/', {
             method: 'get',
             parameters: 'id=' + id,
             onSuccess: function(t) {
