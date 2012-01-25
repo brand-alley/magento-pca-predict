@@ -2,18 +2,12 @@
 <script type="text/javascript">
 //<![CDATA[
 
-    var MEANBEE_POSTCODE_BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
-
-    if(window.location.href.match('https://') && !MEANBEE_POSTCODE_BASE_URL.match('https://')){
-        MEANBEE_POSTCODE_BASE_URL = MEANBEE_POSTCODE_BASE_URL.replace('http://', 'https://')
-    }
-
     /* Set default country (Optional) */
     $('country').value = 'GB';
     accountRegionUpdater.update();
     
     /* Initialise the postcode object */
-    var meanbee_postcode = new AccountPostcode();
+    var meanbee_postcode = new AccountPostcode('<?php echo Mage::getBaseUrl() ?>');
 
 //]]>
 </script>

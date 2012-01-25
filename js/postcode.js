@@ -12,7 +12,13 @@
  */
 
 var Postcode = Class.create({
-    initialize: function() {
+    initialize: function(base_url) {
+
+        if(window.location.href.match('https://') && !base_url.match('https://')){
+            this.base_url = base_url.replace('http://', 'https://')
+        } else {
+            this.base_url = base_url;
+        }
         this.observe();
     },
     
@@ -28,7 +34,7 @@ var Postcode = Class.create({
     },
 
     fetchOptions: function(postcode, successCallback) {
-        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/multiple/', {
+        new Ajax.Request(this.base_url + 'postcode/finder/multiple/', {
             method: 'get',
             parameters: 'postcode=' + postcode,
             onSuccess: successCallback,
@@ -36,7 +42,7 @@ var Postcode = Class.create({
     },
 
     fillFields: function(id, formData) {                
-        new Ajax.Request(MEANBEE_POSTCODE_BASE_URL + 'postcode/finder/single/', {
+        new Ajax.Request(this.base_url + 'postcode/finder/single/', {
             method: 'get',
             parameters: 'id=' + id,
             onSuccess: function(transport) {
@@ -122,10 +128,10 @@ var Postcode = Class.create({
 });
 
 var OPCPostcode = Class.create(Postcode, {
-    initialize: function($super, page) {
+    initialize: function($super, base_url, page) {
         this.page = page;
         this.address_selector = $('meanbee:' + this.page + '_address_selector');
-        $super();
+        $super(base_url);
     },
 
     observe: function($super) {
@@ -223,9 +229,9 @@ var OPCPostcode = Class.create(Postcode, {
 });
 
 var BackendPostcode = Class.create(Postcode, {
-    initialize: function($super, page) {
+    initialize: function($super, base_url) {
         this.address_selector = $('meanbee:backend_address_selector');
-        $super();
+        $super(base_url);
     },
       
     observe: function($super) {
@@ -301,9 +307,9 @@ var BackendPostcode = Class.create(Postcode, {
 });
 
 var AccountPostcode = Class.create(Postcode, {
-    initialize: function($super, page) {
+    initialize: function($super, base_url) {
         this.address_selector = $('meanbee:account_address_selector');
-        $super();
+        $super(base_url);
     },
 
     observe: function($super) {
