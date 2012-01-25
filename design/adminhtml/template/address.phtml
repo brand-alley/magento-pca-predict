@@ -32,10 +32,7 @@
        MEANBEE_POSTCODE_BASE_URL = MEANBEE_POSTCODE_BASE_URL.replace('http://', 'https://')
     }
 
-    var meanbee_postcode = new Postcode();
-
-    /* Activate the listeners */
-    meanbee_postcode.backendObserve('billing', 'backend');
+    var meanbee_postcode = new BackendPostcode();
 
 //]]>
 </script>

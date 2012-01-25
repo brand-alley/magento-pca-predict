@@ -15,9 +15,7 @@
     shippingRegionUpdater.update();
     
     /* Initialise the postcode object */
-    var meanbee_postcode = new Postcode();
-    /* Activate the listeners */
-    meanbee_postcode.observe('billing', 'frontend');
-    meanbee_postcode.observe('shipping', 'frontend');
+    var meanbee_postcode_billing = new OPCPostcode('billing');
+    var meanbee_postcode_shipping = new OPCPostcode('shipping');
 //]]>
 </script>
