@@ -72,20 +72,47 @@
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('Address') ?></h2>
         <ul class="form-list">
-            <li class="wide">
+            <li class="fields">
+                <div class="field">
+                    <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international required-entry" />
+                    </div>
+                </div>
+                <div class="field meanbee-postcode-element">
+                    <label>&nbsp;</label>
+                    <div class="input-box">
+                        <button id="meanbee:account_address_find" type="button" title="<?php echo $this->__('Find Address') ?>" class="button" ><span><span><?php echo $this->__('Find Address') ?></span></span></button>
+                    </div>
+                </div>
+                <div class="field invisible" id="meanbee:account_show_another">
+                    <label>&nbsp;</label>
+                    <div class="input-box">
+                        <a href="#" id="meanbee:account_show_another_link"><?php echo $this->__('Search for another address') ?></a>
+                    </div>
+                </div>
+            </li>            
+            <li class="wide meanbee-postcode-element">
+                <div class="input-box">
+                    <a href="#" id="meanbee:account_input_address_manually"><?php echo $this->__('Input address manually') ?></a>
+                </div>
+            </li>
+            <li id="meanbee:account_address_selector" class="meanbee-postcode-element invisible fields">&nbsp;</li>
+            
+            <li class="wide address-detail invisible">
                 <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
                 <div class="input-box">
                     <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text required-entry" />
                 </div>
             </li>
         <?php for ($_i=2, $_n=$this->helper('customer/address')->getStreetLines(); $_i<=$_n; $_i++): ?>
-            <li class="wide">
+            <li class="wide address-detail invisible">
                 <div class="input-box">
                     <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i?>" class="input-text" />
                 </div>
             </li>
         <?php endfor ?>
-            <li class="fields">
+            <li class="fields address-detail invisible">
                 <div class="field">
                     <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
                     <div class="input-box">
@@ -107,13 +134,7 @@
                     </div>
                 </div>
             </li>
-            <li class="fields">
-                <div class="field">
-                    <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
-                    <div class="input-box">
-                        <input type="text" name="postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international required-entry" />
-                    </div>
-                </div>
+            <li class="fields address-detail invisible">
                 <div class="field">
                     <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
                     <div class="input-box">
@@ -150,6 +171,6 @@
 <script type="text/javascript">
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
-    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+    var accountRegionUpdater = new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
 </script>
