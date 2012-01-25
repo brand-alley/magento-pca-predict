@@ -1,0 +1,126 @@
+<_>
+   <form_key>BkM6zPHfzlPYMyJj</form_key>
+   <name>Meanbee_Postcode</name>
+   <channel>community</channel>
+   <version_ids>
+      <version_ids>2</version_ids>
+   </version_ids>
+   <summary>TODO</summary>
+   <description>TODO</description>
+   <license>Open Source</license>
+   <license_uri/>
+   <version>3.0.0</version>
+   <stability>stable</stability>
+   <notes>- Added lookup functionality to the my account area.
+- Added enable / disable switch in backend.
+- Removed security option in backend.
+- Added comments to backend to better explain options.
+- Frontend now hides fields and shows fields, yielding a simpler interface and less cluttered forms.
+- Automatic install added.
+- Cleaned up Javascript, to increase readability and reduce global conflicts</notes>
+   <authors>
+      <name>
+         <name>Meanbee</name>
+      </name>
+      <user>
+         <user>meanbee</user>
+      </user>
+      <email>
+         <email>hello@meanbee.com</email>
+      </email>
+   </authors>
+   <depends_php_min>5.2.0</depends_php_min>
+   <depends_php_max>6.0.0</depends_php_max>
+   <depends>
+      <package>
+         <name>
+            <name/>
+         </name>
+         <channel>
+            <channel/>
+         </channel>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+         <files>
+            <files>   </files>
+         </files>
+      </package>
+      <extension>
+         <name>
+            <name>PDO</name>
+         </name>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+      </extension>
+   </depends>
+   <contents>
+      <target>
+         <target>magelocal</target>
+         <target>magecommunity</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+         <target>mageskin</target>
+         <target>mageskin</target>
+         <target>mageweb</target>
+         <target>mageetc</target>
+      </target>
+      <path>
+         <path/>
+         <path>Meanbee/Postcode</path>
+         <path>frontend/base/default/layout/meanbee/postcode</path>
+         <path>frontend/base/default/template/meanbee/postcode</path>
+         <path>adminhtml/default/default/layout/meanbee/postcode</path>
+         <path>adminhtml/default/default/template/meanbee/postcode</path>
+         <path>frontend/base/default/meanbee/postcode</path>
+         <path>adminhtml/default/default/meanbee/postcode</path>
+         <path>js/meanbee/postcode</path>
+         <path>modules/Meanbee_Postcode.xml</path>
+      </path>
+      <type>
+         <type>file</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>file</type>
+      </type>
+      <include>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+      </include>
+      <ignore>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+      </ignore>
+   </contents>
+</_>
