@@ -293,7 +293,7 @@ var BackendPostcode = Class.create(Postcode, {
                     concat_line = i - 1;
                 }
 
-                $(formData['street'] + (concat_line+1)).value += ', ' + lines[i];
+                $(formData['street'] + (concat_line)).value += ', ' + lines[i];
             }
         }
     },
