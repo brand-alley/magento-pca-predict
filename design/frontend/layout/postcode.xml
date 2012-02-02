@@ -10,13 +10,13 @@
 
 	<checkout_onepage_index>
         <reference name="content">
-            <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepage_postcode_updates.phtml"/>
+            <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepagePostcodeUpdates.phtml"/>
         </reference>
 	</checkout_onepage_index>
 
     <customer_address_form>
         <reference name="content">
-            <block type="core/template" name="meanbee.account.postcode.updates" template="meanbee/postcode/account_postcode_updates.phtml"/>
+            <block type="core/template" name="meanbee.account.postcode.updates" template="meanbee/postcode/accountPostcodeUpdates.phtml"/>
         </reference>
     </customer_address_form>
 </layout>

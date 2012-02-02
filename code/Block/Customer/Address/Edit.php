@@ -7,7 +7,7 @@ class Meanbee_Postcode_Block_Customer_Address_Edit extends Mage_Customer_Block_A
         if (Mage::helper('postcode')->isEnabled()) {
             $version = Mage::helper('postcode')->getVersion();
             if ($version != false) {
-                return 'meanbee/postcode/' . $version . '/customer_address_edit.phtml';
+                return 'meanbee/postcode/' . $version . '/customerAddressEdit.phtml';
             }
         } else {
             return parent::getTemplate();
