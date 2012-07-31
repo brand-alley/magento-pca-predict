@@ -21,10 +21,13 @@ class Meanbee_Postcode_Helper_Data extends Mage_Core_Helper_Abstract {
     */
     public function getVersion() {
         $version = Mage::getVersion();
-        if (version_compare($version, '1.6.0.0') >= 0) {
-            if (version_compare($version, '1.6.1.0') > 0) {
-                $this->log('Untested version detected: ' . $version . '. Defaulting to 1.6 templates.', Zend_Log::WARN, true);
-            }
+        if (version_compare($version, '1.7.0.0') >= 0) {
+            if (version_compare($version, '1.7.0.2') > 0) {
+                $this->log('Untested version detected: ' . $version . '. Defaulting to 1.7 templates.', Zend_Log::WARN, true);
+            } 
+            $this->log('Magento version 1.7 detected.', Zend_Log::INFO);
+            return '1.7';
+        } elseif (version_compare($version, '1.6.0.0') >= 0) {
             $this->log('Magento version 1.6 detected.', Zend_Log::INFO);
             return '1.6'; 
         } elseif (version_compare($version, '1.5.0.0') >= 0) {
