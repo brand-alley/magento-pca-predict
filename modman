@@ -10,3 +10,4 @@ js                              js/meanbee/postcode
 
 ## Misc
 Module.xml                      app/etc/modules/Meanbee_Postcode.xml
+Package.xml                     var/connect/Meanbee_Postcode.xml

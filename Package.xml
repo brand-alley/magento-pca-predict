@@ -1,23 +1,17 @@
 <_>
-   <form_key>BkM6zPHfzlPYMyJj</form_key>
+   <form_key>3aZzRQvCoqbJWHzi</form_key>
    <name>Meanbee_Postcode</name>
    <channel>community</channel>
    <version_ids>
       <version_ids>2</version_ids>
    </version_ids>
-   <summary>TODO</summary>
-   <description>TODO</description>
+   <summary>Enable your customers to auto-complete their address from their postcode. Auto-complete functionality provided by PostcodeAnywhere is available during the checkout process, in the customer account area, and when creating admin sales orders.</summary>
+   <description>Enable your customers to auto-complete their address from their postcode. Auto-complete functionality provided by PostcodeAnywhere is available during the checkout process, in the customer account area, and when creating admin sales orders.</description>
    <license>Open Source</license>
    <license_uri/>
-   <version>3.0.0</version>
+   <version>3.0.11</version>
    <stability>stable</stability>
-   <notes>- Added lookup functionality to the my account area.
-- Added enable / disable switch in backend.
-- Removed security option in backend.
-- Added comments to backend to better explain options.
-- Frontend now hides fields and shows fields, yielding a simpler interface and less cluttered forms.
-- Automatic install added.
-- Cleaned up Javascript, to increase readability and reduce global conflicts</notes>
+   <notes>Added support for 1.7</notes>
    <authors>
       <name>
          <name>Meanbee</name>
@@ -46,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>   </files>
+            <files>          </files>
          </files>
       </package>
       <extension>
