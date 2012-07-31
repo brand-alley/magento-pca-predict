@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?xml version="1.0"?>
 <!--
 /**
  * Meanbee_Postcode
@@ -31,9 +30,9 @@
 					<show_in_store>1</show_in_store>
 					<comment>
 					<![CDATA[
-						<a href="http://www.postcodeanywhere.co.uk/"><img src="http://www.postcodeanywhere.co.uk/images/dynamic/partnerlogo.aspx?partner=indiv52356" width=200 height=26 border=0 alt="Postcode Anywhere"></a>
+						<a href="http://www.postcodeanywhere.co.uk/"><img src="http://www.postcodeanywhere.co.uk/images/dynamic/partnerlogo.aspx?partner=indiv52356" width=200 height=26 border=0 alt="Postcode Anywhere" /></a>
 						<br />This module was developed by <a href="http://www.meanbee.com">Meanbee</a>.
-						If you require any support, please contact us at <a href="mailto:support@meanbee.com">support@meanbee.com</a>.  We <a href="http://twitter.com/meanbeeuk">tweet</a>!
+						If you require any support, please contact us at <a href="mailto:hello@meanbee.com">hello@meanbee.com</a>.
 					]]></comment>
 				</banner>
 				<general translate="label" module="postcode">
@@ -55,7 +54,7 @@
 						</enabled>
 					</fields>
 				</general>
-				<auth translate="label" module="postcode">
+				<auth translate="label comment" module="postcode">
 					<label>Authentication</label>
 					<frontend_type>text</frontend_type>
 					<sort_order>10</sort_order>
@@ -70,6 +69,10 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
+							<comment>
+							<![CDATA[
+								This is your PostcodeAnywhere.co.uk account code.  It's the same account code you use to log in to the PCA website, and usually looks something like: <em>MEANB33833</em>.
+							]]></comment>
 						</account>
 						<license translate="label">
 							<label>License Key</label>
@@ -80,7 +83,7 @@
 							<show_in_store>1</show_in_store>
 							<comment>
 							<![CDATA[
-								For more information please click <a href="https://www.postcodeanywhere.co.uk/account/manage/keys/">here</a>.
+								This is your PostcodeAnywhere.co.uk license key which you can setup <a href="https://account.postcodeanywhere.co.uk/Products/">here</a>.  For support setting up a new license key <a href="http://www.postcodeanywhere.co.uk/contact-us/">contact Postcode Anywhere</a>.
 							]]></comment>
 						</license>
 					</fields>
