@@ -1,16 +1,14 @@
 <?xml version="1.0"?>
+<?xml version="1.0"?>
 <!--
 /**
  * Meanbee_Postcode
  *
- * This module was developed by Meanbee Internet Solutions.  If you require any
- * support or have any questions please contact us at support@meanbee.com.
- *
  * @category   Meanbee
  * @package    Meanbee_Postcode
- * @author     Meanbee Internet Solutions <support@meanbee.com>
- * @copyright  Copyright (c) 2009 Meanbee Internet Solutions (http://www.meanbee.com)
- * @license    Single Site License, requiring consent from Meanbee Internet Solutions
+ * @author     Meanbee Limited <hello@meanbee.com>
+ * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
+ * @license    Single Site License, requiring consent from Meanbee
  */
 -->
 <config>
@@ -35,7 +33,7 @@
 					<![CDATA[
 						<a href="http://www.postcodeanywhere.co.uk/"><img src="http://www.postcodeanywhere.co.uk/images/dynamic/partnerlogo.aspx?partner=indiv52356" width=200 height=26 border=0 alt="Postcode Anywhere"></a>
 						<br />This module was developed by <a href="http://www.meanbee.com">Meanbee</a>.
-						If you require any support, please contact us at <a href="mailto:support@meanbee.com">support@meanbee.com</a>.  We have a <a href="http://meanbee.com/newsletter">newsletter</a> and use <a href="http://twitter.com/meanbeeuk">twitter</a>.
+						If you require any support, please contact us at <a href="mailto:support@meanbee.com">support@meanbee.com</a>.  We <a href="http://twitter.com/meanbeeuk">tweet</a>!
 					]]></comment>
 				</banner>
 				<general translate="label" module="postcode">

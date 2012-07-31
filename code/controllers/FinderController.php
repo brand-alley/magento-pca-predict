@@ -2,14 +2,11 @@
 /**
  * Meanbee_Postcode
  *
- * This module was developed by Meanbee Internet Solutions.  If you require any
- * support or have any questions please contact us at support@meanbee.com.
- *
  * @category   Meanbee
  * @package    Meanbee_Postcode
- * @author     Meanbee Internet Solutions <support@meanbee.com>
- * @copyright  Copyright (c) 2009 Meanbee Internet Solutions (http://www.meanbee.com)
- * @license    Single Site License, requiring consent from Meanbee Internet Solutions
+ * @author     Meanbee Limited <hello@meanbee.com>
+ * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
+ * @license    Single Site License, requiring consent from Meanbee
  */
 class Meanbee_Postcode_FinderController extends Mage_Core_Controller_Front_Action {
     

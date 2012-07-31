@@ -1,4 +1,13 @@
 <?php
+/**
+ * Meanbee_Postcode
+ *
+ * @category   Meanbee
+ * @package    Meanbee_Postcode
+ * @author     Meanbee Limited <hello@meanbee.com>
+ * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
+ * @license    Single Site License, requiring consent from Meanbee
+ */
 class Meanbee_Postcode_Block_Customer_Address_Edit extends Mage_Customer_Block_Address_Edit {
     /**
      * Override of the getTemplate method to change it to one based on our magento version
