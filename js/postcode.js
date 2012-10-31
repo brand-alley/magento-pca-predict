@@ -34,7 +34,7 @@ var Postcode = Class.create({
         new Ajax.Request(this.base_url + 'postcode/finder/multiple/', {
             method: 'get',
             parameters: 'postcode=' + postcode,
-            onSuccess: successCallback,
+            onSuccess: successCallback
         });
     },
 
@@ -191,7 +191,7 @@ var OPCPostcode = Class.create(Postcode, {
             company: this.page + ':company',
             city: this.page + ':city',
             region: this.page + ':region',
-            postcode: this.page + ':postcode',
+            postcode: this.page + ':postcode'
         };
 
         $super(id, formData);
@@ -269,7 +269,7 @@ var BackendPostcode = Class.create(Postcode, {
             company: field_prefix + 'company',
             city: field_prefix + 'city',
             region: field_prefix + 'region',
-            postcode: field_prefix + 'postcode',
+            postcode: field_prefix + 'postcode'
         };
 
         $super(id, formData);
@@ -369,7 +369,7 @@ var AccountPostcode = Class.create(Postcode, {
             company: 'company',
             city: 'city',
             region: 'region',
-            postcode: 'zip',
+            postcode: 'zip'
         };
 
         $super(id, formData);
