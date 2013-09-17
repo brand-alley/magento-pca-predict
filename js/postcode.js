@@ -46,8 +46,12 @@ var Postcode = Class.create({
                 var json = transport.responseJSON;
 
                 if (!json.error) {
+                    var el;
 
-                    $(formData['countryId']).value = 'GB';
+                    el = $(formData['countryId'])
+                    if (el) {
+                        el.value = 'GB';
+                    }
 
                     if (formData['regionUpdate']) { 
                         eval(formData['regionUpdater'] + '.update()');
@@ -55,25 +59,37 @@ var Postcode = Class.create({
                     
                     this.fillStreetFields(json, formData);
 
-                    if (typeof(json.content.organisation_name) != "undefined") {
-                        $(formData['company']).value = json.content.organisation_name;
-                    } else {
-                        $(formData['company']).value = '';
+                    el = $(formData['company']);
+                    if (el) {
+                        if (typeof(json.content.organisation_name) != "undefined") {
+                            el.value = json.content.organisation_name;
+                        } else {
+                            el.value = '';
+                        }
                     }
-                    
-                    if (typeof(json.content.post_town) != "undefined") {
-                        $(formData['city']).value = json.content.post_town;
-                    } else {
-                        $(formData['city']).value = '';
+
+                    el = $(formData['city']);
+                    if (el) {
+                        if (typeof(json.content.post_town) != "undefined") {
+                            el.value = json.content.post_town;
+                        } else {
+                            el.value = '';
+                        }
                     }
-                    
-                    if (typeof(json.content.county) != "undefined") {
-                        $(formData['region']).value = json.content.county;
-                    } else {
-                        $(formData['region']).value = '';
+
+                    el = $(formData['region']);
+                    if (el) {
+                        if (typeof(json.content.county) != "undefined") {
+                            el.value = json.content.county;
+                        } else {
+                            el.value = '';
+                        }
                     }
-                    
-                    $(formData['postcode']).value = json.content.postcode;
+
+                    el = $(formData['postcode']);
+                    if (el) {
+                        el.value = json.content.postcode;
+                    }
 
                     //$('meanbee:' + a + '_address_selector').innerHTML = '&nbsp;';
 
