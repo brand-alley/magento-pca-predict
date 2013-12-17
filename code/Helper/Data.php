@@ -26,10 +26,10 @@ class Meanbee_Postcode_Helper_Data extends Mage_Core_Helper_Abstract {
                     $this->log('Untested version detected: ' . $version . '. Defaulting to 1.12 templates.', Zend_Log::WARN, true);
                 }
                 $this->log('Magento version 1.12 detected.', Zend_Log::INFO);
-                return '1.12';
+                return 'enterprise/1.12';
             } else {
                 $this->log('Unsupported version detected: ' . $version . '. Defaulting to 1.12 templates.', Zend_Log::ERR, true);
-                return '1.12';
+                return 'enterprise/1.12';
             }
         } elseif ($edition == Mage::EDITION_COMMUNITY) {
 

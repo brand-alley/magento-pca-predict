@@ -206,7 +206,7 @@ var OPCPostcode = Class.create(Postcode, {
                     select += '<option value="' + json.content[i].id + '">' + json.content[i].description + '</option>'
                 }
                 select+= '</select>';
-                $('meanbee:' + this.page + '_address_selector').innerHTML = '<div class="field">' + select + '</div>';
+                $('meanbee:' + this.page + '_address_selector').innerHTML = select;
                 //$('meanbee:' + this.page + '_address_selector').innerHTML += '<br /><small><b>Note:</b> Please select your address from the above drop down menu before pressing "Select Address".</small>';
                 $('meanbee:' + this.page + '_address_selector').removeClassName('invisible');
                 $('meanbee:' + this.page + '_show_another').removeClassName('invisible');
