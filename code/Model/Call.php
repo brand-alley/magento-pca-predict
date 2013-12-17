@@ -82,9 +82,7 @@ class Meanbee_Postcode_Model_Call {
 
         /** @var Meanbee_Postcode_Helper_Data $helper */
         $helper = Mage::helper('postcode');
-        if ($helper->isLoggingEnabled()) {
-            $helper->log(sprintf("Requesting %s", $url));
-        }
+        $helper->log(sprintf("Requesting %s", $url));
         
         //Make the request
         $data = simplexml_load_string($this->_makeRequest($url));
@@ -127,9 +125,7 @@ class Meanbee_Postcode_Model_Call {
 
         /** @var Meanbee_Postcode_Helper_Data $helper */
         $helper = Mage::helper('postcode');
-        if ($helper->isLoggingEnabled()) {
-            $helper->log(sprintf("Requesting %s", $url));
-        }
+        $helper->log(sprintf("Requesting %s", $url));
         
         //Make the request
         $data = simplexml_load_string($this->_makeRequest($url));

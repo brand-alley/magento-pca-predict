@@ -46,7 +46,9 @@ class Meanbee_Postcode_Helper_Data extends Mage_Core_Helper_Abstract {
      * Helper function which logs to our module's log file. 
      */
     public function log($message, $severity = Zend_Log::DEBUG, $force = false) {
-        Mage::log($message, $severity, 'meanbee_postcode.log', $force);
+        if ($this->isLoggingEnabled()) {
+            Mage::log($message, $severity, 'meanbee_postcode.log', $force);
+        }
     }
 
     /**
