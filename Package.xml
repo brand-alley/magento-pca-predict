@@ -1,5 +1,5 @@
 <_>
-   <form_key>3aZzRQvCoqbJWHzi</form_key>
+   <form_key>EtYp31IdkYcfLF1t</form_key>
    <name>Meanbee_Postcode</name>
    <channel>community</channel>
    <version_ids>
@@ -9,9 +9,12 @@
    <description>Enable your customers to auto-complete their address from their postcode. Auto-complete functionality provided by PostcodeAnywhere is available during the checkout process, in the customer account area, and when creating admin sales orders.</description>
    <license>Open Source</license>
    <license_uri/>
-   <version>3.0.11</version>
+   <version>3.1.0</version>
    <stability>stable</stability>
-   <notes>Added support for 1.7</notes>
+   <notes>Added support for 1.8 and EE
+Improved validation messages
+Update address on select
+Add Admin key option</notes>
    <authors>
       <name>
          <name>Meanbee</name>
@@ -40,7 +43,7 @@
             <max/>
          </max>
          <files>
-            <files>          </files>
+            <files>               </files>
          </files>
       </package>
       <extension>
