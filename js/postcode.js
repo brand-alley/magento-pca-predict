@@ -149,12 +149,19 @@ var OPCPostcode = Class.create(Postcode, {
         $super(base_url);
     },
 
-    observe: function($super) {
+    observe: function ($super) {
         var find_address_id = 'meanbee:' + this.page + '_address_find';
         var postcode_field_id = this.page + ':postcode';
         var address_selector_id = 'meanbee:' + this.page + '_address_selector';
-        
-        $super(find_address_id, postcode_field_id, address_selector_id);
+
+        $(find_address_id).observe('click', function (e) {
+            var postcode = $F(postcode_field_id);
+            if (postcode != '') {
+                this.original_address_find_label = $(find_address_id).innerHTML;
+                $(find_address_id).innerHTML = "<span><span>Loading...</span></span>";
+                this.fetchOptions(postcode);
+            }
+        }.bind(this));
 
         $('meanbee:' + this.page + '_input_address_manually').observe('click', function (e) {
             $$('#opc-' + this.page + ' .address-detail').each(function(el) {
@@ -163,17 +170,22 @@ var OPCPostcode = Class.create(Postcode, {
             $$('#opc-' + this.page + ' .meanbee-postcode-element').each(function(el) {
                 el.addClassName('invisible');
             });
+
+            $("meanbee:" + this.page + "_address_find").addClassName("invisible");
             $('meanbee:' + this.page + '_show_another').removeClassName('invisible');
             e.preventDefault();
         }.bind(this));
 
-        $('meanbee:' + this.page + '_show_another_link').observe('click', function(e) {
+        $('meanbee:' + this.page + '_show_another').observe('click', function(e) {
             $$('#opc-' + this.page + ' .address-detail').each(function(el) {
                 el.addClassName('invisible')
             });
+
             $$('#opc-' + this.page + ' .meanbee-postcode-element').each(function(el) {
                 el.removeClassName('invisible');
             });
+            $(this.page + ":postcode").removeClassName("invisible");
+            $("meanbee:" + this.page + "_address_find").removeClassName("invisible");
             $('meanbee:' + this.page + '_show_another').addClassName('invisible');
             $('meanbee:' + this.page + '_address_selector').addClassName('invisible');
             this.clearFields(this.page);
@@ -185,14 +197,21 @@ var OPCPostcode = Class.create(Postcode, {
         successCallback = function(transport) {
             var json = transport.responseJSON;
 
+            $('meanbee:' + this.page + '_address_find').innerHTML = this.original_address_find_label;
+
             if (!json.error) {
-                var select = '<select id="meanbee:' + this.page + '_address_selector_select">';
+                var select = '<select id="meanbee:' + this.page + '_address_selector_select" onchange="meanbee_postcode_' + this.page + '.fillFields($F(\'meanbee:' + this.page + '_address_selector_select\'), \'' + this.page + '\')">';
+                select += '<option value="">Choose your address</option>';
                 for(var i = 0; i < json.content.length; i++) {
                     select += '<option value="' + json.content[i].id + '">' + json.content[i].description + '</option>'
                 }
                 select+= '</select>';
-                $('meanbee:' + this.page + '_address_selector').innerHTML = '<div class="field">' + select + '</div>' + ' <div class="field"><button onclick="meanbee_postcode_' + this.page + '.fillFields($F(\'meanbee:' + this.page + '_address_selector_select\'), \'' + this.page + '\')" type="button" class="button"><span><span>Select Address</span></span></button></div>';
+                $('meanbee:' + this.page + '_address_selector').innerHTML = '<div class="field">' + select + '</div>';
                 //$('meanbee:' + this.page + '_address_selector').innerHTML += '<br /><small><b>Note:</b> Please select your address from the above drop down menu before pressing "Select Address".</small>';
+                $('meanbee:' + this.page + '_address_selector').removeClassName('invisible');
+                $('meanbee:' + this.page + '_show_another').removeClassName('invisible');
+                $(this.page + ":postcode").addClassName("invisible");
+                $("meanbee:" + this.page + "_address_find").addClassName("invisible");
             } else {
                 this.error(json.content);
             }
@@ -217,6 +236,7 @@ var OPCPostcode = Class.create(Postcode, {
 
     childActions: function($super) {
         $super();
+        $(this.page + ":postcode").removeClassName("invisible");
         $$('#opc-' + this.page + ' .address-detail').each(function(el) {
             el.removeClassName('invisible')
         });
