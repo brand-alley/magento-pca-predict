@@ -31,8 +31,8 @@
 					<comment>
 					<![CDATA[
 						<a href="http://www.postcodeanywhere.co.uk/"><img src="http://www.postcodeanywhere.co.uk/images/dynamic/partnerlogo.aspx?partner=indiv52356" width=200 height=26 border=0 alt="Postcode Anywhere" /></a>
-						<br />This module was developed by <a href="http://www.meanbee.com">Meanbee</a>.
-						If you require any support, please contact us at <a href="mailto:hello@meanbee.com">hello@meanbee.com</a>.
+						<br />This module was developed by <a href="http://www.meanbee.com">Meanbee</a>. For support setting up a key <a href="http://www.postcodeanywhere.co.uk/contact-us/">contact Postcode Anywhere</a>.
+						If you require anything else, please contact us at <a href="mailto:hello@meanbee.com">hello@meanbee.com</a>.
 					]]></comment>
 				</banner>
 				<general translate="label" module="postcode">
@@ -52,6 +52,15 @@
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</enabled>
+                        <logging translate="label">
+                            <label>Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </logging>
 					</fields>
 				</general>
 				<auth translate="label comment" module="postcode">
@@ -75,7 +84,7 @@
 							]]></comment>
 						</account>
 						<license translate="label">
-							<label>License Key</label>
+							<label>Public-facing Key</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>20</sort_order>
 							<show_in_default>1</show_in_default>
@@ -83,9 +92,21 @@
 							<show_in_store>1</show_in_store>
 							<comment>
 							<![CDATA[
-								This is your PostcodeAnywhere.co.uk license key which you can setup <a href="https://account.postcodeanywhere.co.uk/Products/">here</a>.  For support setting up a new license key <a href="http://www.postcodeanywhere.co.uk/contact-us/">contact Postcode Anywhere</a>.
+								This is your PostcodeAnywhere.co.uk key for public look-ups which you can setup <a href="https://account.postcodeanywhere.co.uk/Products/">here</a> and pricing is available <a href="http://www.postcodeanywhere.co.uk/address-validation/pricing/">here</a>.
 							]]></comment>
 						</license>
+                        <adminkey translate="label">
+                            <label>Admin Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <![CDATA[
+								This is your PostcodeAnywhere.co.uk key for admin look-ups which you can setup <a href="https://account.postcodeanywhere.co.uk/Products/">here</a> and pricing is available <a href="http://www.postcodeanywhere.co.uk/address-validation/pricing-office/">here</a>.
+								]]></comment>
+                        </adminkey>
 					</fields>
 				</auth>
 			</groups>

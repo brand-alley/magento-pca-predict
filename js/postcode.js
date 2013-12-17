@@ -16,6 +16,7 @@ var Postcode = Class.create({
         } else {
             this.base_url = base_url;
         }
+
         this.observe();
     },
     
@@ -33,7 +34,7 @@ var Postcode = Class.create({
     fetchOptions: function(postcode, successCallback) {
         new Ajax.Request(this.base_url + 'postcode/finder/multiple/', {
             method: 'get',
-            parameters: 'postcode=' + postcode,
+            parameters: 'postcode=' + postcode + '&area=' + this.area,
             onSuccess: successCallback
         });
     },
@@ -41,7 +42,7 @@ var Postcode = Class.create({
     fillFields: function(id, formData) {                
         new Ajax.Request(this.base_url + 'postcode/finder/single/', {
             method: 'get',
-            parameters: 'id=' + id,
+            parameters: 'id=' + id + '&area=' + this.area,
             onSuccess: function(transport) {
                 var json = transport.responseJSON;
 
@@ -144,6 +145,7 @@ var OPCPostcode = Class.create(Postcode, {
     initialize: function($super, base_url, page) {
         this.page = page;
         this.address_selector = $('meanbee:' + this.page + '_address_selector');
+        this.area = "public";
         $super(base_url);
     },
 
@@ -244,6 +246,7 @@ var OPCPostcode = Class.create(Postcode, {
 var BackendPostcode = Class.create(Postcode, {
     initialize: function($super, base_url) {
         this.address_selector = $('meanbee:backend_address_selector');
+        this.area = 'admin';
         $super(base_url);
     },
       
@@ -322,6 +325,7 @@ var BackendPostcode = Class.create(Postcode, {
 var AccountPostcode = Class.create(Postcode, {
     initialize: function($super, base_url) {
         this.address_selector = $('meanbee:account_address_selector');
+        this.area = "public";
         $super(base_url);
     },
 

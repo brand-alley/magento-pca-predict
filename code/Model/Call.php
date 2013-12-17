@@ -12,9 +12,11 @@
  * @license    Single Site License, requiring consent from Meanbee
  */
 class Meanbee_Postcode_Model_Call {    
-    public function findMultipleByPostcode($postcode) {
-        $license = trim(Mage::getStoreConfig('postcode/auth/license'));
-        $account = trim(Mage::getStoreConfig('postcode/auth/account'));
+    public function findMultipleByPostcode($postcode, $area) {
+        /** @var Meanbee_Postcode_Helper_Data $helper */
+        $helper = Mage::helper('postcode');
+        $license = ($area == 'admin') ? $helper->getAdminKey() : $helper->getPublicKey();
+        $account = $helper->getAccountCode();
         
         if (!empty($license) && !empty($account)) {
             try {
@@ -28,9 +30,11 @@ class Meanbee_Postcode_Model_Call {
         }
     }
     
-    public function findSingleAddressById($id) {        
-        $license = trim(Mage::getStoreConfig('postcode/auth/license'));
-        $account = trim(Mage::getStoreConfig('postcode/auth/account'));
+    public function findSingleAddressById($id, $area) {
+        /** @var Meanbee_Postcode_Helper_Data $helper */
+        $helper = Mage::helper('postcode');
+        $license = ($area == 'admin') ? $helper->getAdminKey() : $helper->getPublicKey();
+        $account = $helper->getAccountCode();
         
         if (!empty($license) && !empty($account)) {
             $id = (int) $id;
@@ -75,6 +79,12 @@ class Meanbee_Postcode_Model_Call {
         $url .= "&account_code=" . urlencode($account_code);
         $url .= "&license_code=" . urlencode($license_code);
         $url .= "&machine_id=" . urlencode($machine_id);
+
+        /** @var Meanbee_Postcode_Helper_Data $helper */
+        $helper = Mage::helper('postcode');
+        if ($helper->isLoggingEnabled()) {
+            $helper->log(sprintf("Requesting %s", $url));
+        }
         
         //Make the request
         $data = simplexml_load_string($this->_makeRequest($url));
@@ -114,6 +124,12 @@ class Meanbee_Postcode_Model_Call {
         $url .= "&license_code=" . urlencode($license_code);
         $url .= "&machine_id=" . urlencode($machine_id);
         $url .= "&options=" . urlencode($options);
+
+        /** @var Meanbee_Postcode_Helper_Data $helper */
+        $helper = Mage::helper('postcode');
+        if ($helper->isLoggingEnabled()) {
+            $helper->log(sprintf("Requesting %s", $url));
+        }
         
         //Make the request
         $data = simplexml_load_string($this->_makeRequest($url));

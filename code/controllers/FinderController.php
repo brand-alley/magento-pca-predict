@@ -14,10 +14,12 @@ class Meanbee_Postcode_FinderController extends Mage_Core_Controller_Front_Actio
         header("Content-type: application/json");
 
         $postcode = strtolower(preg_replace("/[^a-zA-Z0-9]/", "", str_replace(' ', '', $_GET['postcode'])));
+        $area = $_GET['area'];
 
         if (!empty($postcode)) {
+            /** @var Meanbee_Postcode_Model_Call $call */
             $call = Mage::getModel('postcode/call');
-            echo $call->findMultipleByPostcode($postcode);
+            echo $call->findMultipleByPostcode($postcode, $area);
         } else {
             echo Zend_Json::encode(array(
                 "error" => true,
@@ -32,9 +34,10 @@ class Meanbee_Postcode_FinderController extends Mage_Core_Controller_Front_Actio
 
         if (isset($_GET['id'])) {
             $id = (int) $_GET['id'];
-
+            $area = $_GET['area'];
+            /** @var Meanbee_Postcode_Model_Call $call */
             $call = Mage::getModel('postcode/call');
-            echo $call->findSingleAddressById($id);
+            echo $call->findSingleAddressById($id, $area);
             exit;
         } else {
             echo Zend_Json::encode(array(
