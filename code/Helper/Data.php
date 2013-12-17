@@ -18,27 +18,43 @@ class Meanbee_Postcode_Helper_Data extends Mage_Core_Helper_Abstract {
     */
     public function getVersion() {
         $version = Mage::getVersion();
-        if (version_compare($version, '1.8.0.0') >= 0) {
-            if (version_compare($version, '1.8.1.0') > 0) {
-                $this->log('Untested version detected: ' . $version . '. Defaulting to 1.8 templates.', Zend_Log::WARN, true);
+        $edition = Mage::getEdition();
+
+        if ($edition == Mage::EDITION_ENTERPRISE) {
+            if (version_compare($version, '1.12.0.0') >= 0) {
+                if (version_compare($version, '1.12.0.2') > 0) {
+                    $this->log('Untested version detected: ' . $version . '. Defaulting to 1.12 templates.', Zend_Log::WARN, true);
+                }
+                $this->log('Magento version 1.12 detected.', Zend_Log::INFO);
+                return '1.12';
+            } else {
+                $this->log('Unsupported version detected: ' . $version . '. Defaulting to 1.12 templates.', Zend_Log::ERR, true);
+                return '1.12';
             }
-            $this->log('Magento version 1.8 detected.', Zend_Log::INFO);
-            return '1.8';
-        } elseif (version_compare($version, '1.7.0.0') >= 0) {
-            $this->log('Magento version 1.7 detected.', Zend_Log::INFO);
-            return '1.7';
-        } elseif (version_compare($version, '1.6.0.0') >= 0) {
-            $this->log('Magento version 1.6 detected.', Zend_Log::INFO);
-            return '1.6'; 
-        } elseif (version_compare($version, '1.5.0.0') >= 0) {
-            $this->log('Magento version 1.5 detected.', Zend_Log::INFO);
-            return '1.5'; 
-        } elseif (version_compare($version, '1.4.0.0') >= 0) {
-            $this->log('Magento version 1.4 detected.', Zend_Log::INFO);
-            return '1.4'; 
-        } else {
-            $this->log('Unsupported version detected: ' . $version, Zend_Log::ERR, true);
-            return false; 
+        } elseif ($edition == Mage::EDITION_COMMUNITY) {
+
+            if (version_compare($version, '1.8.0.0') >= 0) {
+                if (version_compare($version, '1.8.1.0') > 0) {
+                    $this->log('Untested version detected: ' . $version . '. Defaulting to 1.8 templates.', Zend_Log::WARN, true);
+                }
+                $this->log('Magento version 1.8 detected.', Zend_Log::INFO);
+                return '1.8';
+            } elseif (version_compare($version, '1.7.0.0') >= 0) {
+                $this->log('Magento version 1.7 detected.', Zend_Log::INFO);
+                return '1.7';
+            } elseif (version_compare($version, '1.6.0.0') >= 0) {
+                $this->log('Magento version 1.6 detected.', Zend_Log::INFO);
+                return '1.6';
+            } elseif (version_compare($version, '1.5.0.0') >= 0) {
+                $this->log('Magento version 1.5 detected.', Zend_Log::INFO);
+                return '1.5';
+            } elseif (version_compare($version, '1.4.0.0') >= 0) {
+                $this->log('Magento version 1.4 detected.', Zend_Log::INFO);
+                return '1.4';
+            } else {
+                $this->log('Unsupported version detected: ' . $version, Zend_Log::ERR, true);
+                return false;
+            }
         }
     }
 
