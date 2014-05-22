@@ -1,0 +1,9 @@
+.onestepcheckout-index-index div.checkoutcontainer div.input-postcode {
+    width: 100%;
+    float: none;
+    clear: both;
+}
+
+.onestepcheckout-index-index div.checkoutcontainer div.input-postcode .input-text {
+    width: 46%;
+}

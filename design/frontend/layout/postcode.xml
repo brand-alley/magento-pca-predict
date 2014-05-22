@@ -1,18 +1,42 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-    <default>
-		<reference name="head">
-            <action method="addJs"><script>meanbee/postcode/simulate.js</script></action>
-            <action method="addJs"><script>meanbee/postcode/postcode.js</script></action>
-            <action method="addCss"><stylesheet>meanbee/postcode/css/postcode.css</stylesheet></action> 
-		</reference>
-    </default>
 
-	<checkout_onepage_index>
+    <checkout_onepage_index>
+        <update handle="checkout_postcodeanywhere"/>
+
         <reference name="content">
             <block type="core/template" name="meanbee.onepage.postcode.updates" template="meanbee/postcode/onepagePostcodeUpdates.phtml"/>
         </reference>
-	</checkout_onepage_index>
+
+    </checkout_onepage_index>
+
+    <onestepcheckout_index_index>
+        <update handle="checkout_postcodeanywhere" />
+
+        <reference name="head">
+            <action method="addCss"><stylesheet>meanbee/postcode/css/onestepcheckout.css</stylesheet></action>
+        </reference>
+
+        <reference name="onestepcheckout.billing.address">
+            <action method="setTemplate" ifconfig="postcode/general/enabled">
+                <template>meanbee/postcode/onestepcheckout/billing_fields.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="onestepcheckout.shipping.address">
+            <action method="setTemplate" ifconfig="postcode/general/enabled">
+                <tempalte>meanbee/postcode/onestepcheckout/shipping_fields.phtml</tempalte>
+            </action>
+        </reference>
+    </onestepcheckout_index_index>
+
+    <checkout_postcodeanywhere>
+        <reference name="head">
+            <action method="addJs"><script>meanbee/postcode/simulate.js</script></action>
+            <action method="addJs"><script>meanbee/postcode/postcode.js</script></action>
+            <action method="addCss"><stylesheet>meanbee/postcode/css/postcode.css</stylesheet></action>
+        </reference>
+    </checkout_postcodeanywhere>
 
     <customer_address_form>
         <reference name="content">
