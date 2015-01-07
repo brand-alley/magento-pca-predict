@@ -25,7 +25,7 @@
 
         <reference name="onestepcheckout.shipping.address">
             <action method="setTemplate" ifconfig="postcode/general/enabled">
-                <tempalte>meanbee/postcode/onestepcheckout/shipping_fields.phtml</tempalte>
+                <template>meanbee/postcode/onestepcheckout/shipping_fields.phtml</template>
             </action>
         </reference>
     </onestepcheckout_index_index>
@@ -39,6 +39,8 @@
     </checkout_postcodeanywhere>
 
     <customer_address_form>
+        <update handle="checkout_postcodeanywhere" />
+        
         <reference name="content">
             <block type="core/template" name="meanbee.account.postcode.updates" template="meanbee/postcode/accountPostcodeUpdates.phtml"/>
         </reference>
