@@ -1,13 +1,14 @@
 ## Code
-code                            app/code/community/Meanbee/Postcode
-design/frontend/layout          app/design/frontend/base/default/layout/meanbee/postcode
-design/frontend/template        app/design/frontend/base/default/template/meanbee/postcode
-design/adminhtml/layout         app/design/adminhtml/default/default/layout/meanbee/postcode
-design/adminhtml/template       app/design/adminhtml/default/default/template/meanbee/postcode
-assets/frontend                 skin/frontend/base/default/meanbee/postcode
-assets/adminhtml                skin/adminhtml/default/default/meanbee/postcode
-js                              js/meanbee/postcode
+app/code/community/Meanbee/Postcode app/code/community/Meanbee/Postcode
+app/design/frontend/base/default/layout/meanbee/postcode app/design/frontend/base/default/layout/meanbee/postcode
+app/design/frontend/base/default/template/meanbee/postcode app/design/frontend/base/default/template/meanbee/postcode
+app/design/adminhtml/default/default/layout/meanbee/postcode app/design/adminhtml/default/default/layout/meanbee/postcode
+app/design/adminhtml/default/default/template/meanbee/postcode app/design/adminhtml/default/default/template/meanbee/postcode
+skin/frontend/base/default/meanbee/postcode skin/frontend/base/default/meanbee/postcode
+skin/adminhtml/default/default/meanbee/postcode skin/adminhtml/default/default/meanbee/postcode
+js/meanbee/postcode js/meanbee/postcode
+
 
 ## Misc
-Module.xml                      app/etc/modules/Meanbee_Postcode.xml
-Package.xml                     var/connect/Meanbee_Postcode.xml
+app/etc/modules/Meanbee_Postcode.xml app/etc/modules/Meanbee_Postcode.xml
+Package.xml var/connect/Meanbee_Postcode.xml
