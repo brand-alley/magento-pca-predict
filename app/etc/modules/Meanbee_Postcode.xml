@@ -14,11 +14,11 @@
  */
  -->
 <config>
-	<modules>
-		<Meanbee_Postcode>
-			<active>true</active>
-			<codePool>community</codePool>
-		</Meanbee_Postcode>
-	</modules>
+    <modules>
+        <Meanbee_Postcode>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Meanbee_Postcode>
+    </modules>
 </config>
 
