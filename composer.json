@@ -22,10 +22,10 @@
   ],
   "autoload": {
     "files": [
-      "registration.php"
+      "module-src/Meanbee/Postcode/registration.php"
     ],
     "psr-4": {
-      "Meanbee\\Postcode\\": "module-src/Meanbee"
+      "Meanbee\\Postcode\\": "module-src/Meanbee/Postcode"
     }
   }
 }
