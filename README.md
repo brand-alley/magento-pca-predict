@@ -5,7 +5,7 @@ Postcode anywhere allows users to easily search for their address using their po
     "repositories": [
         {
             "type":"vcs",
-            "url":"git@bitbucket.org:meanbee/postcode-mage2.git"
+            "url":"https://nathanmcbride1@bitbucket.org/meanbee/postcode-mage2.git"
         }
     ],
     "require":{
