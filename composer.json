@@ -1,0 +1,31 @@
+{
+  "name": "meanbee/postcode-mage2",
+  "description": "Look-up Customer Addresses from their Postcode",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0"
+  },
+  "type": "magento2-module",
+  "version": "100.0.2",
+  "authors": [
+    {
+      "name": "Tom Robertshaw",
+      "email": "tom.robertshaw@meanbee.com"
+    },
+    {
+      "name": "Nathan McBride",
+      "email": "nathan.mcbride@meanbee.com"
+    }
+  ],
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Meanbee\\Postcode\\": "module-src/Meanbee"
+    }
+  }
+}
