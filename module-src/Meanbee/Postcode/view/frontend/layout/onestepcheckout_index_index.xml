@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+        <css src="Meanbee_Postcode::meanbee/postcode/css/onestepcheckout.css"/>
+    </head>
+    <body>
+        <update handle="checkout_postcodeanywhere"/>
+        <reference name="onestepcheckout.billing.address">
+            <action method="setTemplate" ifconfig="postcode/general/enabled">
+                <argument name="template" xsi:type="string">Meanbee_Postcode::meanbee/postcode/onestepcheckout/billing_fields.phtml</argument>
+            </action>
+        </reference>
+        <reference name="onestepcheckout.shipping.address">
+            <action method="setTemplate" ifconfig="postcode/general/enabled">
+                <argument name="template" xsi:type="string">Meanbee_Postcode::meanbee/postcode/onestepcheckout/shipping_fields.phtml</argument>
+            </action>
+        </reference>
+    </body>
+</page>

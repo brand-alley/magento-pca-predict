@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Meanbee_Postcode
+ *
+ * @category   Meanbee
+ * @package    Meanbee_Postcode
+ * @author     Meanbee Limited <hello@meanbee.com>
+ * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
+ * @license    Single Site License, requiring consent from Meanbee
+ */
+-->
+<config>
+	
+	<global>
+		<blocks>
+			<postcode>
+				<class>Meanbee_Postcode_Block</class>
+			</postcode>
+
+            <checkout>
+                <rewrite>
+                    <onepage_shipping>Meanbee\Postcode\Block\Checkout\Onepage\Shipping</onepage_shipping>
+                    <onepage_billing>Meanbee_Postcode_Block_Checkout_Onepage_Billing</onepage_billing>
+                </rewrite>
+            </checkout>
+            <customer>
+                <rewrite>
+                    <address_edit>Meanbee_Postcode_Block_Customer_Address_Edit</address_edit>
+                </rewrite>
+            </customer>
+		</blocks>
+		
+		<helpers>
+			<postcode>
+				<class>Meanbee_Postcode_Helper</class>
+			</postcode>
+		</helpers>
+	</global>
+	
+	<frontend>
+		<layout>
+			<updates>
+				<postcode>
+                    <file>meanbee/postcode/postcode.xml</file>
+				</postcode>
+			</updates>
+		</layout>
+	</frontend>
+	
+    <adminhtml>
+        <layout>
+            <updates>
+                <postcode>
+                    <file>meanbee/postcode/postcode.xml</file>
+                </postcode>
+            </updates>
+        </layout>
+
+		<acl>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<postcode translate="title" module="postcode">
+											<title>Address Finder Section</title>
+										</postcode>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+</config>

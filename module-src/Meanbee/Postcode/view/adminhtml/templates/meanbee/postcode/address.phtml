@@ -1,0 +1,33 @@
+<?php echo $this->getChildHtml('magento_form_account') ?>
+<?php if (Mage::helper('postcode')->isEnabled()): ?>
+<div class="meanbee_address_finder entry-edit">
+    <div class="entry-edit-head">
+        <h4>Meanbee Address Finder</h4>
+    </div>
+    <fieldset class="np">
+        <table class="form-list" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td class="label">
+                        <label for="backend:postcode"><?php echo $this->__('Enter Postcode:') ?></label>
+                    </td>
+                    <td class="value">
+                        <input class="input-text" type="text" title="<?php echo $this->__('Post Code') ?>" id="backend:postcode">
+                        <button id="meanbee:backend_address_find" type="button">Find Address</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li id="meanbee:backend_address_selector">&nbsp;</li>
+        </ul>
+    </fieldset>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+    var meanbee_postcode = new BackendPostcode('<?php echo Mage::getBaseUrl() ?>');
+
+//]]>
+</script>
+<?php endif; ?>

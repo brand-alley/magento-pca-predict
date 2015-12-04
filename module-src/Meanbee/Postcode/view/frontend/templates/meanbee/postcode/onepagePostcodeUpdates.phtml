@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    //<![CDATA[
+    /* Set default country (Optional) */
+    if ($('opc-billing')) {
+        $('billing:country_id').value = 'GB';
+        billingRegionUpdater.update();
+        var meanbee_postcode_billing = new OPCPostcode('<?php echo Mage::getBaseUrl() ?>', 'billing');
+    }
+
+    if ($('opc-shipping')) {
+        $('shipping:country_id').value = 'GB';
+        shippingRegionUpdater.update();
+        var meanbee_postcode_shipping = new OPCPostcode('<?php echo Mage::getBaseUrl() ?>', 'shipping');
+    }
+    //]]>
+</script>
+

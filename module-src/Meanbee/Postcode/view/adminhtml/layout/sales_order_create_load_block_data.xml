@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <body>
+        <referenceBlock name="data">
+            <referenceBlock name="form_account">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Meanbee_Postcode::meanbee/postcode/address.phtml</argument>
+                </action>
+                <block template="Meanbee_Postcode::sales/order/create/form/account.phtml" class="Magento\Sales\Block\Adminhtml\Order\Create\Form\Account" name="magento_form_account"/>
+            </referenceBlock>
+        </referenceBlock>
+    </body>
+</page>
