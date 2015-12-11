@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <head>
-        <js class="Meanbee_Postcode::meanbee/postcode/simulate.js"/>
-        <js class="Meanbee_Postcode::meanbee/postcode/postcode.js"/>
-        <css src="Meanbee_Postcode::meanbee/postcode/css/postcode.css"/>
-    </head>
-</page>

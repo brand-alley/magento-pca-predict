@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <body>
-        <update handle="checkout_postcodeanywhere"/>
-        <referenceContainer name="content">
-            <block template="Meanbee_Postcode::meanbee/postcode/onepagePostcodeUpdates.phtml" class="Magento\Framework\View\Element\Template" name="meanbee.onepage.postcode.updates"/>
-        </referenceContainer>
-    </body>
-</page>
