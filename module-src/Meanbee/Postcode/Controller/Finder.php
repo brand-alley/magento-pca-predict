@@ -10,25 +10,39 @@
  */
 namespace Meanbee\Postcode\Controller;
 
-use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Meanbee\Postcode\Model\Call;
 
-class FinderController extends \Magento\Framework\App\Action\Action {
-    public function __construct(
-        \Magento\Framework\App\Action\Context $context
-    ) {
-        parent::__construct(
-            $context
-        );
-    }
+abstract class Finder extends Action
+{
 
     /**
-     * Dispatch request
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
+     * @var JsonFactory
      */
-    public function execute()
-    {
-        // TODO: Implement execute() method.
+    protected $resultJsonFactory;
+
+    /**
+     * @var Call
+     */
+    protected $call;
+
+    /**
+     * Finder constructor.
+     *
+     * @param Context     $context
+     * @param JsonFactory $resultJsonFactory
+     * @param Call        $call
+     */
+    public function __construct(
+        Context $context,
+        JsonFactory $resultJsonFactory,
+        Call $call
+    ) {
+        parent::__construct($context);
+        $this->resultJsonFactory = $resultJsonFactory;
+        $this->call = $call;
     }
+
 }
