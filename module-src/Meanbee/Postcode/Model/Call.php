@@ -24,16 +24,21 @@ class Call
      */
     protected $postcodeData;
 
-    protected $response = [];
+    /**
+     * @var Response
+     */
+    protected $response;
 
     /**
      * Call constructor.
      *
-     * @param Data $postcodeData
+     * @param Data     $postcodeData
+     * @param Response $response
      */
-    public function __construct(Data $postcodeData)
+    public function __construct(Data $postcodeData, Response $response)
     {
         $this->postcodeData = $postcodeData;
+        $this->response = $response;
     }
 
     /**
@@ -48,18 +53,20 @@ class Call
     {
         list($license, $account) = $this->checkAccountAndLicense($area);
 
-        if (count($this->response)) {
-            return $this->response;
+        if ($this->response->getError() === true) {
+            return $this->response->toArray();
         }
 
         try {
             $content = $this->_submitFindAddressesRequest($postcode, $account, $license, '');
-            $this->response = ['error' => false, 'content' => $content];
+            $this->response->setError(false);
+            $this->response->setContent($content);
         } catch (Exception $e) {
-            $this->response = ['error' => true, 'content' => $e->getMessage()];
+            $this->response->setError(true);
+            $this->response->setContent($e->getMessage());
         }
 
-        return $this->response;
+        return $this->response->toArray();
     }
 
     /**
@@ -72,8 +79,8 @@ class Call
     {
         list($license, $account) = $this->checkAccountAndLicense($area);
 
-        if (count($this->response)) {
-            return $this->response;
+        if ($this->response->getError() === true) {
+            return $this->response->toArray();
         }
 
         $id = intval($id);
@@ -82,15 +89,18 @@ class Call
             $result = $this->_submitFindSingleAddressRequest($id, 'english', 'simple', $account, $license, '', '');
 
             if (count($result)) {
-                $this->response = ['error' => false, 'content' => $result[0]];
+                $this->response->setError(false);
+                $this->response->setContent($result[0]);
             } else {
-                $this->response = ['error' => true, 'content' => "Unable to find address ($id)"];
+                $this->response->setError(true);
+                $this->response->setContent("Unable to find address ($id)");
             }
         } catch (Exception $e) {
-            $this->response = ['error' => true, 'content' => $e->getMessage()];
+            $this->response->setError(true);
+            $this->response->setContent($e->getMessage());
         }
 
-        return $this->response;
+        return $this->response->toArray();
     }
 
     protected function _submitFindAddressesRequest($postcode, $account_code, $license_code, $machine_id)
@@ -192,6 +202,8 @@ class Call
     }
 
     /**
+     * @todo move license/account into own model.
+     *
      * @param $area
      *
      * @return array
@@ -202,10 +214,8 @@ class Call
         $account = $this->postcodeData->getAccountCode();
 
         if (empty($license) || empty($account)) {
-            $this->response = [
-                'error'   => true,
-                'content' => 'License and/or Account keys are not set in the configuration'
-            ];
+            $this->response->setError(true);
+            $this->response->setContent('License and/or Account keys are not set in the configuration');
 
             return [$license, $account];
         }
