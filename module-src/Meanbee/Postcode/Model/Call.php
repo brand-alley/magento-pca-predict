@@ -103,6 +103,16 @@ class Call
         return $this->response->toArray();
     }
 
+    /**
+     * @todo move url into own object.
+     *
+     * @param $postcode
+     * @param $account_code
+     * @param $license_code
+     * @param $machine_id
+     *
+     * @return array
+     */
     protected function _submitFindAddressesRequest($postcode, $account_code, $license_code, $machine_id)
     {
         //Built with help from James at http://www.omlet.co.uk/
@@ -121,7 +131,7 @@ class Call
 
         //Check for an error
         if ($data->Schema['Items'] == 2) {
-            throw new exception ($data->Data->Item['message']);
+            throw new Exception ($data->Data->Item['message']);
         }
 
         //Create the response
@@ -134,13 +144,26 @@ class Call
         }
 
         if (empty($output)) {
-            throw new exception ('Invalid Postcode');
+            throw new Exception ('Invalid Postcode');
         }
 
         //Return the result
         return $output;
     }
 
+    /**
+     * @todo move the $url into it's own object.
+     *
+     * @param $id
+     * @param $language
+     * @param $style
+     * @param $account_code
+     * @param $license_code
+     * @param $machine_id
+     * @param $options
+     *
+     * @return array
+     */
     protected function _submitFindSingleAddressRequest(
         $id,
         $language,
@@ -183,7 +206,13 @@ class Call
     }
 
     /**
-     * Fetch the contents at a URL.  Use cURL if available.
+     * @todo I'm sure we can make the request in a
+     *       'Magento' fashion rather than using raw
+     *       PHP.
+     *
+     * @param $url
+     *
+     * @return mixed|string
      */
     protected function _makeRequest($url)
     {
