@@ -14,6 +14,7 @@
  */
 namespace Meanbee\Postcode\Model;
 
+use Exception;
 use Meanbee\Postcode\Helper\Data;
 
 class Call
@@ -163,8 +164,6 @@ class Call
     }
 
     /**
-     * @todo move the $url into it's own object.
-     *
      * @param $id
      * @param $language
      * @param $style
@@ -196,7 +195,7 @@ class Call
             'machine_id'   => $machine_id,
             'options'      => $options
         ]);
-        
+
         //Make the request
         $data = simplexml_load_string($this->_makeRequest($this->url->getUrl()));
         $output = array();
