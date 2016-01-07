@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Meanbee_Postcode
  *
@@ -14,7 +15,6 @@
 namespace Meanbee\Postcode\Model;
 
 use Meanbee\Postcode\Helper\Data;
-use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Call
 {
@@ -30,15 +30,26 @@ class Call
     protected $response;
 
     /**
+     * @var Url
+     */
+    protected $url;
+
+    /**
      * Call constructor.
      *
      * @param Data     $postcodeData
      * @param Response $response
+     * @param Url      $url
      */
-    public function __construct(Data $postcodeData, Response $response)
+    public function __construct(
+        Data $postcodeData,
+        Response $response,
+        Url $url
+    )
     {
         $this->postcodeData = $postcodeData;
         $this->response = $response;
+        $this->url = $url;
     }
 
     /**
@@ -112,26 +123,26 @@ class Call
      * @param $machine_id
      *
      * @return array
+     * @throws Exception
      */
     protected function _submitFindAddressesRequest($postcode, $account_code, $license_code, $machine_id)
     {
-        //Built with help from James at http://www.omlet.co.uk/
-        //Build the url
-        $url = "http://services.postcodeanywhere.co.uk/xml.aspx?";
-        $url .= "&action=lookup";
-        $url .= "&type=by_postcode";
-        $url .= "&postcode=" . urlencode($postcode);
-        $url .= "&account_code=" . urlencode($account_code);
-        $url .= "&license_code=" . urlencode($license_code);
-        $url .= "&machine_id=" . urlencode($machine_id);
+        $this->url->setParams([
+            'action'       => 'lookup',
+            'type'         => 'by_postcode',
+            'postcode'     => $postcode,
+            'account_code' => $account_code,
+            'license_code' => $license_code,
+            'machine_id'   => $machine_id
+        ]);
 
         //Make the request
-        $data = simplexml_load_string($this->_makeRequest($url));
+        $data = simplexml_load_string($this->_makeRequest($this->url->getUrl()));
         $output = array();
 
         //Check for an error
         if ($data->Schema['Items'] == 2) {
-            throw new Exception ($data->Data->Item['message']);
+            throw new Exception($data->Data->Item['message']);
         }
 
         //Create the response
@@ -144,7 +155,7 @@ class Call
         }
 
         if (empty($output)) {
-            throw new Exception ('Invalid Postcode');
+            throw new Exception('Invalid Postcode');
         }
 
         //Return the result
@@ -163,6 +174,7 @@ class Call
      * @param $options
      *
      * @return array
+     * @throws Exception
      */
     protected function _submitFindSingleAddressRequest(
         $id,
@@ -173,20 +185,20 @@ class Call
         $machine_id,
         $options
     ) {
-        //Built with help from James at http://www.omlet.co.uk/
-        //Build the url
-        $url = "http://services.postcodeanywhere.co.uk/xml.aspx?";
-        $url .= "&action=fetch";
-        $url .= "&id=" . urlencode($id);
-        $url .= "&language=" . urlencode($language);
-        $url .= "&style=" . urlencode($style);
-        $url .= "&account_code=" . urlencode($account_code);
-        $url .= "&license_code=" . urlencode($license_code);
-        $url .= "&machine_id=" . urlencode($machine_id);
-        $url .= "&options=" . urlencode($options);
 
+        $this->url->setParams([
+            'action'       => 'fetch',
+            'id'           => $id,
+            'language'     => $language,
+            'style'        => $style,
+            'account_code' => $account_code,
+            'license_code' => $license_code,
+            'machine_id'   => $machine_id,
+            'options'      => $options
+        ]);
+        
         //Make the request
-        $data = simplexml_load_string($this->_makeRequest($url));
+        $data = simplexml_load_string($this->_makeRequest($this->url->getUrl()));
         $output = array();
 
         //Check for an error
