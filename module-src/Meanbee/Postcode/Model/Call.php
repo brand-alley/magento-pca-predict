@@ -38,16 +38,15 @@ class Call
     /**
      * Call constructor.
      *
-     * @param Data     $postcodeData
-     * @param Response $response
-     * @param Url      $url
+     * @param Data              $postcodeData
+     * @param ResponseInterface $response
+     * @param UrlInterface      $url
      */
     public function __construct(
         Data $postcodeData,
-        Response $response,
-        Url $url
-    )
-    {
+        ResponseInterface $response,
+        UrlInterface $url
+    ) {
         $this->postcodeData = $postcodeData;
         $this->response = $response;
         $this->url = $url;
@@ -242,7 +241,7 @@ class Call
     }
 
     /**
-     * @todo move license/account into own model.
+     * @todo move license/account and do authentication in controller
      *
      * @param $area
      *

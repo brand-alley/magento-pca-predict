@@ -12,9 +12,9 @@
  * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
  * @license    Single Site License, requiring consent from Meanbee
  */
-namespace Meanbee\Postcode\Model;
+namespace Meanbee\Postcode\Model\PostcodeAnywhere;
 
-use Magento\Framework\App\Rss\UrlBuilderInterface;
+use Meanbee\Postcode\Model\UrlInterface;
 
 class Url implements UrlInterface
 {
