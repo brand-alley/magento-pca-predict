@@ -1,21 +1,12 @@
 <?php
 
-/**
- * Meanbee_Postcode
- *
- * Portions of this software uses code found at:
- *   - http://www.postcodeanywhere.co.uk/developers
- *
- * @category   Meanbee
- * @package    Meanbee_Postcode
- * @author     Meanbee Limited <hello@meanbee.com>
- * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
- * @license    Single Site License, requiring consent from Meanbee
- */
 namespace Meanbee\Postcode\Model;
 
 class Response implements ResponseInterface
 {
+
+    const ERROR_KEY = 'error';
+    const CONTENT_KEY = 'content';
 
     /**
      * @var bool
@@ -95,8 +86,8 @@ class Response implements ResponseInterface
     public function toArray()
     {
         return [
-            'error'   => $this->error,
-            'content' => $this->content
+            static::ERROR_KEY   => $this->error,
+            static::CONTENT_KEY => $this->content
         ];
     }
 }

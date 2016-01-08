@@ -1,16 +1,5 @@
 <?php
-/**
- * Meanbee_Postcode
- *
- * Portions of this software uses code found at:
- *   - http://www.postcodeanywhere.co.uk/developers
- *
- * @category   Meanbee
- * @package    Meanbee_Postcode
- * @author     Meanbee Limited <hello@meanbee.com>
- * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
- * @license    Single Site License, requiring consent from Meanbee
- */
+
 namespace Meanbee\Postcode\Model;
 
 interface ResponseInterface {

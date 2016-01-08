@@ -15,11 +15,9 @@ class Multiple extends Finder
     public function execute()
     {
         $result = $this->resultJsonFactory->create();
+        $data = $this->postcodeFinder->getMultipleAddresses($this->getRequest()->getParam('postcode'));
 
-        return $result->setData($this->call->findMultipleByPostcode(
-            $this->getRequest()->getParam('postcode'),
-            $this->getRequest()->getParam('area')
-        ));
+        return $result->setData($data);
     }
 
 }

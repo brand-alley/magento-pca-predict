@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-
+    <preference for="Meanbee\Postcode\Api\ServiceInterface" type="Meanbee\Postcode\Service\PostcodeAnywhereService" />
+    <preference for="Meanbee\Postcode\Api\PostcodeAnywhere\ServiceConfigurationInterface" type="Meanbee\Postcode\Helper\PostcodeAnywhere\Config" />
 </config>

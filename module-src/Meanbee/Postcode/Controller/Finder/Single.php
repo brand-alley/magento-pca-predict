@@ -15,11 +15,9 @@ class Single extends Finder
     public function execute()
     {
         $result = $this->resultJsonFactory->create();
+        $data = $this->postcodeFinder->getSingleAddress($this->getRequest()->getParam('id'));
 
-        return $result->setData($this->call->findSingleAddressById(
-            $this->getRequest()->getParam('id'),
-            $this->getRequest()->getParam('area')
-        ));
+        return $result->setData($data);
     }
 
 }

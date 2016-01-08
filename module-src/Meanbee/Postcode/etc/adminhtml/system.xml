@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Meanbee_Postcode
+ *
+ * @category   Meanbee
+ * @package    Meanbee_Postcode
+ * @author     Meanbee Limited <hello@meanbee.com>
+ * @copyright  Copyright (c) 2012 Meanbee Limited (http://www.meanbee.com)
+ * @license    Single Site License, requiring consent from Meanbee
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+	<system>
+		<tab id="meanbee_postcode" translate="label" sortOrder="1000">
+			<label>Meanbee Postcode Finder</label>
+		</tab>
+		<section id="banner" translate="label" type="text" sortORder="10" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Module Information</label>
+			<tab>meanbee_postcode</tab>
+			<resource>Meanbee_Postcode::config_postcode</resource>
+			<group id="fields_masks" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General Options</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+
+</config>

@@ -13,7 +13,9 @@ namespace Meanbee\Postcode\Controller;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Meanbee\Postcode\Api\ServiceInterface;
 use Meanbee\Postcode\Model\Call;
+use Meanbee\Postcode\Model\PostcodeFinder;
 
 abstract class Finder extends Action
 {
@@ -24,25 +26,25 @@ abstract class Finder extends Action
     protected $resultJsonFactory;
 
     /**
-     * @var Call
+     * @var ServiceInterface
      */
-    protected $call;
+    protected $postcodeFinder;
 
     /**
      * Finder constructor.
      *
-     * @param Context     $context
-     * @param JsonFactory $resultJsonFactory
-     * @param Call        $call
+     * @param Context        $context
+     * @param JsonFactory    $resultJsonFactory
+     * @param ServiceInterface $postcodeFinder
      */
     public function __construct(
         Context $context,
         JsonFactory $resultJsonFactory,
-        Call $call
+        ServiceInterface $postcodeFinder
     ) {
         parent::__construct($context);
         $this->resultJsonFactory = $resultJsonFactory;
-        $this->call = $call;
+        $this->postcodeFinder = $postcodeFinder;
     }
 
 }
