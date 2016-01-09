@@ -5,7 +5,7 @@ namespace Meanbee\Postcode\Helper;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
-abstract class Config
+class Config
 {
 
     /**

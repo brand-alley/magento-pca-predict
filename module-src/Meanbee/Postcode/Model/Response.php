@@ -1,6 +1,6 @@
 <?php
 
-namespace Meanbee\Postcode\Model;
+namespace Meanbee\Postcode\Api;
 
 class Response implements ResponseInterface
 {
