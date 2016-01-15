@@ -28,15 +28,10 @@ class ServiceConfiguration extends DefaultServiceConfiguration
     /**
      * ServiceConfiguration constructor.
      *
-     * @param ScopeConfigInterface $scopeConfig
-     * @param Config               $config
+     * @param Config $config
      */
-    public function __construct(
-        ScopeConfigInterface $scopeConfig,
-        Config $config
-    )
+    public function __construct(Config $config)
     {
-        $this->scopeConfig = $scopeConfig;
         $this->config = $config;
 
         parent::__construct(
@@ -45,6 +40,7 @@ class ServiceConfiguration extends DefaultServiceConfiguration
             $this->getAccountCode()
         );
     }
+
     /**
      * Check if the extension is enabled in Magento
      *
@@ -72,7 +68,7 @@ class ServiceConfiguration extends DefaultServiceConfiguration
      */
     public function getApiKey()
     {
-        return $this->config->getConfig(static::CONFIG_XML_IS_API_KEY);
+        return 'XX31-TP26-KP59-NC16';//$this->config->getConfig(static::CONFIG_XML_IS_API_KEY);
     }
 
     /**
@@ -82,7 +78,7 @@ class ServiceConfiguration extends DefaultServiceConfiguration
      */
     public function getLicenceKey()
     {
-        return $this->config->getConfig(static::CONFIG_XML_IS_LICENCE_KEY);
+        return 'XX31-TP26-KP59-NC16';//$this->config->getConfig(static::CONFIG_XML_IS_LICENCE_KEY);
     }
 
     /**
@@ -92,7 +88,7 @@ class ServiceConfiguration extends DefaultServiceConfiguration
      */
     public function getAccountCode()
     {
-        return $this->config->getConfig(static::CONFIG_XML_IS_ACCOUNT_CODE);
+        return 'INDIV52356';//$this->config->getConfig(static::CONFIG_XML_IS_ACCOUNT_CODE);
     }
 
 }
