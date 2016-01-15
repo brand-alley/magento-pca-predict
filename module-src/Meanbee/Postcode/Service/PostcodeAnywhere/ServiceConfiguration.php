@@ -30,9 +30,9 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     /**
      * ServiceConfiguration constructor.
      *
-     * @param $apiKey
-     * @param $licenceKey
-     * @param $accountCode
+     * @param string $apiKey
+     * @param string $licenceKey
+     * @param string z$accountCode
      */
     public function __construct($apiKey = null, $licenceKey = null, $accountCode = null)
     {
@@ -88,7 +88,7 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getApiKey()
     {
@@ -96,7 +96,7 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLicenceKey()
     {
@@ -104,7 +104,7 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAccountCode()
     {
