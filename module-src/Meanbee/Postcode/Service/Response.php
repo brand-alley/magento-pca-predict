@@ -1,6 +1,8 @@
 <?php
 
-namespace Meanbee\Postcode\Api;
+namespace Meanbee\Postcode\Service;
+
+use Meanbee\Postcode\Api\ResponseInterface;
 
 class Response implements ResponseInterface
 {
@@ -26,8 +28,8 @@ class Response implements ResponseInterface
      */
     public function __construct($error = null, $content = null)
     {
-        $this->setError($error);
-        $this->setContent($content);
+        $this->error = $error;
+        $this->content = $content;
     }
 
     /**

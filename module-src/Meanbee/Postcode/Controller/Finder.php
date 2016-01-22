@@ -14,8 +14,6 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Meanbee\Postcode\Api\ServiceInterface;
-use Meanbee\Postcode\Model\Call;
-use Meanbee\Postcode\Model\PostcodeFinder;
 
 abstract class Finder extends Action
 {

@@ -4,7 +4,6 @@ namespace Meanbee\Postcode\Api;
 
 interface ServiceInterface
 {
-
     /**
      * Return a unique code for the service.
      *

@@ -2,4 +2,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Meanbee\Postcode\Api\ServiceInterface" type="Meanbee\Postcode\Service\PostcodeAnywhereService" />
     <preference for="Meanbee\Postcode\Api\PostcodeAnywhere\ServiceConfigurationInterface" type="Meanbee\Postcode\Helper\PostcodeAnywhere\ServiceConfiguration" />
+    <preference for="\Zend_Http_Client_Adapter_Interface" type="\Magento\Framework\HTTP\Adapter\Curl" />
+    <preference for="\Meanbee\Postcode\Api\ResponseInterface" type="\Meanbee\Postcode\Service\PostcodeAnywhere\Response" />
 </config>

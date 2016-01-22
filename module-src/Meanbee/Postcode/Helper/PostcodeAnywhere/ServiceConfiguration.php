@@ -9,11 +9,10 @@ use Meanbee\Postcode\Service\PostcodeAnywhere\ServiceConfiguration as DefaultSer
 class ServiceConfiguration extends DefaultServiceConfiguration
 {
 
-    const CONFIG_XML_IS_ENABLED = 'postcode/general/enabled';
-    const CONFIG_XML_IS_ACCOUNT_CODE = 'postcode/auth/account';
-    const CONFIG_XML_IS_API_KEY = 'postcode/auth/api_key';
-    const CONFIG_XML_IS_LICENCE_KEY = 'postcode/auth/license';
-    const CONFIG_XML_IS_LOGGING = 'postcode/general/logging';
+    const CONFIG_XML_IS_ENABLED = 'meanbee_postcode/postcode_anywhere/enabled';
+    const CONFIG_XML_IS_ACCOUNT_CODE = 'meanbee_postcode/postcode_anywhere/account_code';
+    const CONFIG_XML_IS_LICENCE_KEY = 'meanbee_postcode/postcode_anywhere/license';
+    const CONFIG_XML_IS_LOGGING = 'meanbee_postcode/postcode_anywhere/enable_logging';
 
     /**
      * @var ScopeConfigInterface
@@ -35,7 +34,6 @@ class ServiceConfiguration extends DefaultServiceConfiguration
         $this->config = $config;
 
         parent::__construct(
-            $this->getApiKey(),
             $this->getLicenceKey(),
             $this->getAccountCode()
         );
@@ -62,23 +60,13 @@ class ServiceConfiguration extends DefaultServiceConfiguration
     }
 
     /**
-     * Get the API Key
-     *
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return 'XX31-TP26-KP59-NC16';//$this->config->getConfig(static::CONFIG_XML_IS_API_KEY);
-    }
-
-    /**
      * Get the licence key
      *
      * @return string
      */
     public function getLicenceKey()
     {
-        return 'XX31-TP26-KP59-NC16';//$this->config->getConfig(static::CONFIG_XML_IS_LICENCE_KEY);
+        return $this->config->getConfig(static::CONFIG_XML_IS_LICENCE_KEY);
     }
 
     /**
@@ -88,7 +76,7 @@ class ServiceConfiguration extends DefaultServiceConfiguration
      */
     public function getAccountCode()
     {
-        return 'INDIV52356';//$this->config->getConfig(static::CONFIG_XML_IS_ACCOUNT_CODE);
+        return $this->config->getConfig(static::CONFIG_XML_IS_ACCOUNT_CODE);
     }
 
 }

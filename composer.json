@@ -20,6 +20,9 @@
     "OSL-3.0",
     "AFL-3.0"
   ],
+  "require-dev": {
+    "zendframework/zend-http": "~2.4.8"
+  },
   "autoload": {
     "files": [
       "module-src/Meanbee/Postcode/registration.php"

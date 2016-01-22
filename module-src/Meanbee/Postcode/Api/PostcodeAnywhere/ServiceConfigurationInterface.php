@@ -6,13 +6,6 @@ interface ServiceConfigurationInterface
 {
 
     /**
-     * Get the api key.
-     *
-     * @return string
-     */
-    public function getApiKey();
-
-    /**
      * Get the license key.
      *
      * @return string

@@ -15,11 +15,6 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     /**
      * @var
      */
-    protected $apiKey;
-
-    /**
-     * @var
-     */
     protected $licenceKey;
 
     /**
@@ -30,14 +25,11 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     /**
      * ServiceConfiguration constructor.
      *
-     * @param string $apiKey
      * @param string $licenceKey
-     * @param string z$accountCode
+     * @param string $accountCode
      */
-    public function __construct($apiKey = null, $licenceKey = null, $accountCode = null)
+    public function __construct($licenceKey = null, $accountCode = null)
     {
-
-        $this->apiKey = $apiKey;
         $this->licenceKey = $licenceKey;
         $this->accountCode = $accountCode;
     }
@@ -85,14 +77,6 @@ class ServiceConfiguration implements ServiceConfigurationInterface
     public function getOptions()
     {
         return static::DEFAULT_OPTIONS;
-    }
-
-    /**
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
     }
 
     /**

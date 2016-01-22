@@ -5,8 +5,10 @@ namespace Meanbee\Postcode\Service;
 use Exception;
 
 use Meanbee\Postcode\Api\PostcodeAnywhere\ServiceConfigurationInterface;
+use Meanbee\Postcode\Api\ResponseInterface;
 use Meanbee\Postcode\Api\ServiceInterface;
 use Meanbee\Postcode\Service\PostcodeAnywhere\Url;
+use Zend_Http_Client;
 
 class PostcodeAnywhereService implements ServiceInterface {
 
@@ -28,15 +30,29 @@ class PostcodeAnywhereService implements ServiceInterface {
     protected $serviceConfiguration;
 
     /**
+     * @var ResponseInterface
+     */
+    protected $response;
+
+    /**
+     * @var Zend_Http_Client
+     */
+    protected $client;
+
+    /**
      * PostcodeAnywhereService constructor.
      *
      * @param ServiceConfigurationInterface $serviceConfiguration
+     * @param Zend_Http_Client              $client
+     * @param ResponseInterface             $response
      * @param Url                           $url
      *
      * @throws Exception
      */
     public function __construct(
         ServiceConfigurationInterface $serviceConfiguration,
+        Zend_Http_Client $client,
+        ResponseInterface $response,
         Url $url
     )
     {
@@ -47,6 +63,8 @@ class PostcodeAnywhereService implements ServiceInterface {
         }
 
         $this->url = $url;
+        $this->response = $response;
+        $this->client = $client;
     }
 
     /**
@@ -56,7 +74,7 @@ class PostcodeAnywhereService implements ServiceInterface {
      */
     public function isAccountValid()
     {
-        return ($this->serviceConfiguration->getApiKey() && $this->serviceConfiguration->getLicenceKey());
+        return ($this->serviceConfiguration->getAccountCode() && $this->serviceConfiguration->getLicenceKey());
     }
 
     /**
@@ -89,7 +107,10 @@ class PostcodeAnywhereService implements ServiceInterface {
             'options'      => $this->serviceConfiguration->getOptions()
         ]);
 
-        return $this->makeRequest();
+        $this->client->setUri($this->url->getUrl());
+        $this->response->setContent($this->client->request()->getBody());
+
+        return $this->response->toArray();
     }
 
     /**
@@ -110,28 +131,21 @@ class PostcodeAnywhereService implements ServiceInterface {
             'machine_id'   => $this->serviceConfiguration->getMachineId()
         ]);
 
-        return $this->makeRequest();
+        $this->client->setUri($this->url->getUrl());
+        $this->response->setContent($this->client->request()->getBody());
+
+        return $this->response->toArray();
     }
 
-    /**
-     * @todo: move curl into Guzzle type thing.
-     *
-     * @return mixed|string
-     */
-    protected function makeRequest()
-    {
-        if (function_exists("curl_setopt")) {
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_HEADER, 0);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl, CURLOPT_URL, $this->url->getUrl());
-            $data = curl_exec($curl);
-            curl_close($curl);
 
-            return $data;
-        } else {
-            return file_get_contents($this->url->getUrl());
-        }
+    /**
+     * Get the current response from PostcodeAnywhere.
+     *
+     * @return ResponseInterface
+     */
+    public function getResponse()
+    {
+        return $this->response;
     }
 
 }
