@@ -1,0 +1,16 @@
+<label for="postcode">Postcode</label>
+<input id="postcode" type="text" />
+<input id="postcode-button" type="button" value="Search!!!" />
+<script type="text/javascript">
+
+    require(['jquery'], function ($) {
+        var selectors = {
+            find_address_id: "button",
+            postcode_field_id: "postcode"
+        };
+
+        $('#postcode-button').click(function () {
+            $('#postcode').meanbee_Postcode(selectors)
+        });
+    });
+</script>

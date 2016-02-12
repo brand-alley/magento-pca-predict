@@ -5,6 +5,6 @@
     <css src="Meanbee_Postcode::css/postcode.css"/>
 </head>
 <referenceContainer name="content">
-    <block template="Meanbee_Postcode::onepage/postcode_updates.phtml" class="Magento\Framework\View\Element\Template" name="meanbee.account.postcode.updates"/>
+    <block template="Meanbee_Postcode::accountPostcodeUpdates.phtml" class="Magento\Framework\View\Element\Template" name="meanbee.account.postcode.updates"/>
 </referenceContainer>
 </page>

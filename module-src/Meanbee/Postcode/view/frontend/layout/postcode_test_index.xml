@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="requirejs/require.js" />
+        <!--<link src="Meanbee_Postcode::requirejs-config.js" />-->
+        <link src="Meanbee_Postcode::js/jQuery/postcode.js" />
+    </head>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Meanbee\Postcode\Block\Test" name="test.script" template="Meanbee_Postcode::test.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
