@@ -1,6 +1,6 @@
-Meanbee Postcode Anywhere Extension
+Meanbee PCA Predict (formerly Postcode Anywhere) Extension
 =====================
-Teaming up with postcodeanywhere.co.uk, we have developed a UK Address completion tool for Magento allowing your customers to complete their addresses by providing their postcodes and a click on a button. What’s more, the same great lookup functionality is now available when creating an order in the Magento Admin.
+Teaming up with [pcapredict.co.uk](https://www.postcodeanywhere.co.uk/partners/INDIV52356), we have developed a UK Address completion tool for Magento allowing your customers to complete their addresses by providing their postcodes and a click on a button. What’s more, the same great lookup functionality is now available when creating an order in the Magento Admin.
 
 Using postcodeanywhere.co.uk's address completion service, UK Magento store owners can now:
 
@@ -10,9 +10,9 @@ Using postcodeanywhere.co.uk's address completion service, UK Magento store owne
 - Avoid the cost of missed deliveries
 - Improve Customer Service
 
-If you’re not a UK store owner, and would like this functionality for other countries around the world, you should consider our other module: Smart Address.
+If you're not a UK store owner, and would like this functionality for other countries around the world, you should consider our other module: Smart Address.
 
-PostcodeAnywhere.co.uk's search credits start at £50 for 1000 lookups.
+[PCA Predicts's](https://www.postcodeanywhere.co.uk/partners/INDIV52356) search credits start at £50 for 1000 lookups.
 
 #### Customised Checkouts
 We provide instructions on how to integrate the module into the standard Magento OnePage Checkout. It’s almost certainly possible to integrate the module into any other Magento Checkouts, but we do not support nor provide instructions for doing so. Don’t worry, it shouldn’t take a decent Magento developer much time at all.
