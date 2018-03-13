@@ -95,7 +95,7 @@ class Meanbee_Postcode_Model_Call {
         
         //Create the response
         foreach ($data->Data->children() as $row) {
-            $rowItems="";
+            $rowItems=[];
             foreach($row->attributes() as $key => $value) {
                 $rowItems[$key]=strval($value);
             }
@@ -138,7 +138,7 @@ class Meanbee_Postcode_Model_Call {
         
         //Create the response
         foreach ($data->Data->children() as $row) {
-            $rowItems="";
+            $rowItems=[];
             foreach($row->attributes() as $key => $value) {
                 $rowItems[$key]=strval($value);
             }
