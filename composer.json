@@ -1,0 +1,6 @@
+{
+    "name": "meanbee/pca_predict",
+    "description": "PCA Predict plugin for Magento",
+    "license": "tobedefined",
+    "type": "magento-module"
+}
